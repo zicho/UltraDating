@@ -2,7 +2,7 @@
     ViewBag.Title = "Startsida";
     if (User.Identity.IsAuthenticated)
     {
-        ViewBag.TitleBar = "Välkommen, " + (ViewData["FullName"]) + "!";
+        ViewBag.TitleBar = "Välkommen, " + (ViewData["FirstName"]) + "!";
     } else
     {
         ViewBag.TitleBar = "Välkommen!";
