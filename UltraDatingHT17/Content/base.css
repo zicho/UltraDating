@@ -1,0 +1,386 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f1f1f1;
+}
+
+h2 {
+    margin-bottom: 5px;
+    font-family: "Oxygen";
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    color: #555;
+}
+
+#main-menu li {
+    float: left;
+}
+
+    #main-menu li a {
+        transition: background-color 0.2s;
+        display: block;
+        color: #f1f1f1;
+        text-align: center;
+        padding: 14px 16px 14px 16px;
+        text-decoration: none;
+    }
+
+    #main-menu li i {
+        vertical-align: middle;
+        margin: 0px 8px 4px 0px;
+    }
+
+    #main-menu li:hover:not(.active) {
+        background-color: #8c0d26;
+    }
+
+#main-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #a30f2d;
+    float: right;
+    height: 48px;
+}
+
+.user-input-form { width: 100% }
+
+.red {
+    color: #a30f2d !important
+}
+
+hr {
+    clear: both;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+}
+
+#navbar {
+    font-family: "Barlow Condensed";
+    background-color: #a30f2d;
+    transition: background 0.2s;
+    width: 100%;
+    height: 48px;
+    border-bottom: 1px solid #222;
+}
+
+
+
+#titlebar {
+    font-family: "Oxygen";
+    background-color: #808080;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    border-bottom: 1px solid #222;
+}
+
+    #titlebar h1 {
+        float: left;
+        color: #e6e6e6;
+        font-size: 24px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        font-family: 'PT Sans';
+    }
+
+#logo a {
+    float: left;
+    margin-top: 4px;
+    align-items: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+    #logo a:visited {
+        color: #f1f1f1;
+        text-decoration: none;
+    }
+
+#dropdown {
+    width: 100%;
+    overflow: auto;
+    height: auto;
+    background-color: #808080;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+    display: none;
+    border-bottom: 1px solid #222;
+    border-top: 1px solid #222;
+}
+
+    #dropdown a {
+        color: #e6e6e6;
+        text-decoration: none;
+    }
+
+#content {
+    position: absolute;
+    z-index: -1;
+}
+
+    #content h1 {
+        font-family: "Oxygen", sans-serif;
+        font-size: 36px;
+        letter-spacing: 0px;
+        color: #333;
+        font-weight: 700;
+    }
+
+.menu-items {
+    letter-spacing: 2px;
+}
+
+#content p,
+#content span {
+    color: #333;
+}
+
+#content p,
+#content span,
+#content label,
+#content textarea,
+#content input,
+#content ul {
+    font-family: "Open Sans", sans-serif;
+}
+
+#content a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.1s;
+    color: #555;
+}
+
+    #content a:hover {
+        color: #888
+    }
+
+#menu-button {
+    height: 48px;
+    width: 24px;
+}
+
+#columns {
+    display: flex;
+    flex-direction: columns;
+}
+
+    #columns div {
+        margin-right: 20px;
+    }
+
+    #columns h2 {
+        margin-bottom: 4px;
+    }
+
+    #columns div:last-child {
+        margin-right: 0px;
+    }
+
+
+textarea {
+    font-size: 12px;
+}
+
+#login-form {
+    display: inline-block;
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+    width: 100%; /* Full width */
+    padding: 8px; /* Some padding */
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 3px; /* Add a top margin */
+    margin-bottom: 6px; /* Bottom margin */
+    resize: none; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+.btn {
+    width: 200px;
+    background-color: #a30f2d;
+    color: #f1f1f1;
+    padding: 12px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    transition: 0.2s;
+}
+
+    .btn:hover {
+        background-color: #8c0d26;
+    }
+
+.accept {
+    color: #f9f9f9;
+    background-color: #1fc71f;
+}
+
+    .accept:hover {
+        color: #f1f1f1;
+        background-color: #189a18;
+    }
+
+.right {
+    float: right
+}
+
+.text-image {
+    float: left;
+    height: 140px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.profile-image {
+    float: left;
+    height: 200px;
+    margin: 5px 20px;
+    padding: 0;
+}
+
+.active:hover {
+    background-color: #750b20;
+}
+
+.active {
+    background-color: #750b20;
+}
+
+.friend-list {
+    list-style-type: none;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+
+    .friend-list li {
+        float: left;
+    }
+
+/* MEDIA */
+
+@media screen and (min-width: 1600px) {
+    #main-menu .icon {
+        display: none;
+    }
+
+    #content {
+        margin: 10px 15% 2% 15%;
+        padding-bottom: 20px;
+    }
+
+    #logo a, #titlebar h1 {
+        margin-left: 15%;
+    }
+
+    .menu-items {
+        margin-right: 15%;
+    }
+}
+
+@media screen and (max-width: 1599px) and (min-width: 800px) {
+    #main-menu .icon {
+        display: none;
+    }
+
+    #content {
+        margin: 10px 5% 2% 5%;
+        padding-bottom: 20px;
+    }
+
+    #logo a, #titlebar h1 {
+        margin-left: 5%;
+    }
+
+    .menu-items {
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 799px) {
+    #dropdown {
+        text-align: center;
+    }
+
+        #dropdown a {
+            color: #f1f1f1;
+            font-size: 1.6em;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            transition: 0.2s;
+        }
+
+            #dropdown a:hover {
+                color: #ffffff;
+                background-color: #333;
+            }
+
+    #columns {
+        display: flex;
+        flex-direction: column;
+    }
+
+        #columns h2 {
+            margin-bottom: 8px;
+        }
+
+        #columns div {
+            margin-bottom: 20px;
+            margin-right: 0;
+        }
+
+    #content {
+        margin: 10px 2% 2% 2%;
+        padding-bottom: 20px;
+    }
+
+    .menu-items {
+        margin-right: 0%;
+    }
+
+        .menu-items li:not(:last-child) {
+            display: none;
+        }
+
+    .text-image {
+        float: left;
+        height: 20%;
+        width: 100%;
+        margin: auto;
+    }
+
+    .btn {
+        width: 100%;
+        float: none;
+    }
+
+    body {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    #logo, #titlebar h1 {
+        margin-left: 8px;
+    }
+}

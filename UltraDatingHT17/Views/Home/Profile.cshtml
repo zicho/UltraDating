@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    ViewBag.TitleBar = "Profile";
+    ViewBag.Activate = "profile";
+}
+
+    <div id="columns">
+        <div>
+            <img class="profile-image" src="http://www.bayareacatrescue.org/images/bayareacatrescue_logo.gif">
+            <input type="submit" value="Change picture" class="btn">
+        </div>    
+
+        <div>
+            <h2>Friends</h2>
+            <ul class="friend-list">
+                <li>Username Surname</li>
+                <li>Username Surname</li>
+                <li>Username Surname</li>
+                <li>Username Surname</li>
+                <li>Username Surname</li>
+            </ul>
+            <br />
+            <span><a href="">View all...</a></span>
+        </div>
+
+        <div>
+            <h2>Biography</h2>
+            <p>
+                <b>Name:</b><br />
+                <b>Age</b><br />
+                <b>Email:</b><br />
+                <br />
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus ex nec ligula vulputate aliquet. In scelerisque feugiat sapien eu blandit. Curabitur non neque in ex scelerisque porttitor vitae ac turpis. Pellentesque id erat gravida, ultrices
+                mi nec, sodales quam. Curabitur tristique sem sagittis, sodales justo ut, dictum erat. Quisque sit amet turpis velit. Praesent at consectetur enim, id imperdiet nibh. Nunc vehicula massa sed diam rhoncus, a maximus nisl imperdiet. Maecenas posuere
+                pharetra mauris. Nulla facilisi. In nec leo a orci lobortis blandit in pretium erat.
+            </p>
+            <br />
+            <input type="submit" value="Edit Profile" class="btn right">
+           
+        </div>
+    </div>
+
+<div id="shoutbox-posts">
+
+    <h2>{{ username's }} shoutbox:</h2>
+
+    <div class="shoutbox-entry">
+        <span class="shoutbox-entry-author"><b>Martin</b></span> - <span class="shoutbox-entry-date">December 12th, 2017 / 13:47</span>
+        <p class="shoutbox-entry-content">
+            Allt e skit!
+        </p>
+
+    </div>
+
+</div>
+<hr /><br />
+<div id="shoutbox-form">
+    <form action="">
+        <h2>Leave a message for {{ username }}</h2>
+
+        <textarea class="shoutbox-entry-content-input" name="shoutbox-entry-content-input" placeholder="Write something..." resize="no"></textarea>
+
+        <input type="submit" value="Post" class="btn right">
+
+    </form>
+</div>

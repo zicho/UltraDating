@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Friends";
+    ViewBag.TitleBar = "Friends";
+    ViewBag.Activate = "friends";
+}
+<style>
+    #friendList, #pendingRequests {
+        margin-bottom: 20px;
+    }
+
+    #friendList {
+        width: 100%;
+        float: left;
+    }
+    #friendList img {
+        height: 100%;
+        max-height: 60px;
+        object-fit: contain;
+        clear:both;
+    }
+    .friendInfo {
+        width: 25%;
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        vertical-align: top;
+        padding: 5px;
+    }
+
+    #pendingRequests {
+        display: block;
+        width: 100%;
+    }
+    .requestBox {
+        width: 100%;
+        height: auto;
+        float: left;
+        margin-bottom: 10px;
+    }
+    .requestBox img {
+        float:left;
+        height: 100%;
+        max-height: 120px;
+        object-fit: contain;
+    }
+    .requestInfo{
+        float: left;
+        padding: 5px;
+        vertical-align: middle;
+    }
+</style>
+
+
+<div id="pendingRequests">
+    <h2>Requests</h2>
+    <div class="requestBox">
+        <p>Mette Marit</p>
+        <img src="http://www.postcardfromholland.com/portrait_small.jpg" />
+        <div class="requestInfo">
+            <p>Ni har 5 gemensamma vänner</p>
+            <button class="btn accept">Accept</button>
+            <button class="btn">Decline</button>
+        </div>
+    </div>
+    <div class="requestBox">
+        <p>Gunnar Gunnarsson</p>
+        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
+        <div class="requestInfo">
+            <p>Ni har 1 gemensam vän</p>
+            <button class="btn accept">Accept</button>
+            <button class="btn">Decline</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="friendList">
+    <h2>Friends</h2>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Christian Reuter</p>    
+    </div>
+    <div class="friendInfo">
+        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+        <p>Savoir Bernecotte Laurelle</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
+        <p>Savoir Bernecottirone Laurelle</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Lars-Christian Christoffersson</p>
+    </div>
+    <div class="friendInfo">
+        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+        <p>Lars Leijonborg</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Carl Ek</p>
+    </div>
+    <div class="friendInfo">
+        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+        <p>Olyckan Problemo</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Carln Reuter</p>
+    </div>
+    <div class="friendInfo">
+        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+        <p>Savoir Bernecotte Laurelle</p>
+    </div>
+</div>

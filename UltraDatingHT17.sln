@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltraDatingHT17", "UltraDatingHT17\UltraDatingHT17.csproj", "{082CE127-92F3-42B2-932A-3253F89ECD09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{082CE127-92F3-42B2-932A-3253F89ECD09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082CE127-92F3-42B2-932A-3253F89ECD09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082CE127-92F3-42B2-932A-3253F89ECD09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082CE127-92F3-42B2-932A-3253F89ECD09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34447CB1-53F8-4094-BA34-2A98D14BFBA1}
+	EndGlobalSection
+EndGlobal
