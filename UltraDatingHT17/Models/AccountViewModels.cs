@@ -48,12 +48,12 @@ namespace UltraDatingHT17.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "You need to enter a valid e-mail adress.")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You need to enter a valid password.")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -64,16 +64,26 @@ namespace UltraDatingHT17.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "You need to enter a valid e-mail adress.")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You need to enter a valid password.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "You need to enter a first name.")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "First Name")]
+        public string Firstname { get; set; }
+
+        [Required(ErrorMessage = "You need to enter a last name.")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Last Name")]
+        public string Lastname { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]

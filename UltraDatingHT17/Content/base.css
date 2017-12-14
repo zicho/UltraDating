@@ -48,7 +48,9 @@ h2 {
     height: 48px;
 }
 
-.user-input-form { width: 100% }
+.user-input-form { width: 100%; }
+
+.errorlist li { list-style: none;}
 
 .red {
     color: #a30f2d !important
