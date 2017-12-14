@@ -1,8 +1,14 @@
 ﻿@{
     ViewBag.Title = "Startsida";
-    ViewBag.TitleBar = "Välkommen " + HttpContext.Current.User.Get;
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewBag.TitleBar = "Välkommen, " + (ViewData["FullName"]) + "!";
+    } else
+    {
+        ViewBag.TitleBar = "Välkommen!";
+    }
     ViewBag.Activate = "home";
-}
+    }
 
 
 

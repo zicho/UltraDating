@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace UltraDatingHT17.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : FieldController
     {
         public ActionResult Index()
         {
