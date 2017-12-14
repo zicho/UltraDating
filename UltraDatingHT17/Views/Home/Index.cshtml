@@ -1,8 +1,10 @@
 ﻿@{
     ViewBag.Title = "Startsida";
-    ViewBag.TitleBar = "Välkommen";
+    ViewBag.TitleBar = "Välkommen " + HttpContext.Current.User.Get;
     ViewBag.Activate = "home";
 }
+
+
 
 <div id="columns">
 

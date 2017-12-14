@@ -34,4 +34,6 @@ namespace UltraDatingHT17.Models
             return new ApplicationDbContext();
         }
     }
+
+    
 }
