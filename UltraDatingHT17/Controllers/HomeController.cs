@@ -139,6 +139,21 @@ namespace UltraDatingHT17.Controllers
             return View(db.Users.ToList());
         }
 
+        public ActionResult Search(string name = "")
+        {
+            List<ApplicationUser> matchedUsers = new List<ApplicationUser>();
+            matchedUsers.AddRange(db.Users.ToList().Where(i => (i.Firstname + ' ' + i.Lastname).Contains(name)));
+
+            if (matchedUsers != null)
+            {
+                return View(matchedUsers);
+            }
+            else
+            {
+                return View(db.Users.ToList());
+            }
+        }
+
         public ActionResult LogIn()
         {
 
