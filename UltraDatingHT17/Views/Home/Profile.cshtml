@@ -1,4 +1,6 @@
-﻿@{
+﻿@model UltraDatingHT17.Models.ApplicationUser
+
+@{
     ViewBag.Title = "Profile";
     ViewBag.TitleBar = "Profile";
     ViewBag.Activate = "profile";
@@ -26,9 +28,9 @@
         <div>
             <h2>Biography</h2>
             <p>
-                <b>Name:</b><br />
+                <b>Name:</b> @Model.Firstname @Model.Lastname<br />
                 <b>Age</b><br />
-                <b>Email:</b><br />
+                <b>Email:</b>@Model.Email<br />
                 <br />
 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus ex nec ligula vulputate aliquet. In scelerisque feugiat sapien eu blandit. Curabitur non neque in ex scelerisque porttitor vitae ac turpis. Pellentesque id erat gravida, ultrices

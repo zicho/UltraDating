@@ -22,7 +22,7 @@
                 {
                     <ul>
                         <li id="home"><a href="@Url.Action("Index", "Home")">home</a></li>
-                        <li id="profile"><a href="@Url.Action("Profile", "Home")">profile</a></li>
+                        <li id="profile"><a href="@Url.Action("Profile", "Home", new { username = (ViewData["ProfileName"]) })">profile</a></li>
                         <li id="friends"><a href="@Url.Action("Friends", "Home")">friends</a></li>
                         <li id="community"><a href="@Url.Action("Community", "Home")">community</a></li>
                         

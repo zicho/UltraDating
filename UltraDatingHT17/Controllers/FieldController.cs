@@ -24,10 +24,12 @@ namespace UltraDatingHT17.Controllers
                     string fullName = string.Concat(new string[] { user.Firstname, " ", user.Lastname });
                     string firstName = user.Firstname;
                     string lastName = user.Lastname;
+                    string profileName = user.Profilename;
 
                     ViewData.Add("FullName", fullName);
                     ViewData.Add("FirstName", firstName);
                     ViewData.Add("LastName", lastName);
+                    ViewData.Add("ProfileName", profileName);
                     }
                 }
             }

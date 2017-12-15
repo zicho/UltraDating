@@ -19,16 +19,16 @@ namespace UltraDatingHT17.Controllers
             return View();
         }
 
-        public new ActionResult Profile(string profilename)
+        public new ActionResult Profile(string username)
         {
             try
             {
-                if (profilename == null)
+                if (username == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == profilename);
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
 
                 if (user == null)
                 {
@@ -39,7 +39,7 @@ namespace UltraDatingHT17.Controllers
             }
             catch
             {
-                RedirectToAction("Error", "Home");
+                RedirectToAction("Index", "Home");
             }
 
             return View();
