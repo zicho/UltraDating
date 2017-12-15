@@ -10,7 +10,6 @@ namespace UltraDatingHT17.Controllers
 {
     public class HomeController : FieldController
     {
-
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public ActionResult Index()

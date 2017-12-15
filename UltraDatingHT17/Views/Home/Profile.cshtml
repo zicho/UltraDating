@@ -2,7 +2,14 @@
 
 @{
     ViewBag.Title = "Profile";
-    ViewBag.TitleBar = "Profile";
+    if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+    {
+        ViewBag.TitleBar = "Din profil";
+    }
+    else
+    {
+        ViewBag.TitleBar = @Model.Firstname + "s profil";
+    }
     ViewBag.Activate = "profile";
 }
 
