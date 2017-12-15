@@ -29,7 +29,11 @@
     }
 </style>
 <h2>User search</h2>
-<input type="text" />
+@using (Html.BeginForm("Search", "Home"))
+{
+
+}
+
 
 @foreach (var item in Model)
 {
@@ -37,26 +41,32 @@
         <td>
             @Html.DisplayFor(modelItem => item.Firstname)
         </td>
-        </tr>
+    </tr>
 }
-
-        <button class="btn">Search</button>
+<p>
+    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("name") <input type="submit" value="Search" />
+    }
+</p>
+@*<input type="text" id="searchBox" />
+<button type="button" onclick="location.href='@Url.Action("Search", "Home", new { s = searchBox'">SEARCH</button>*@
 
         <div id="friendList">
-            <div class="friendInfo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-                <p>Christian Reuter</p>
-            </div>
-            <div class="friendInfo">
-                <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-                <p>Savoir Bernecotte Laurelle</p>
-            </div>
-            <div class="friendInfo">
-                <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
-                <p>Savoir Bernecottirone Laurelle</p>
-            </div>
-            <div class="friendInfo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-                <p>Lars-Christian Christoffersson</p>
-            </div>
-        </div>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Christian Reuter</p>
+    </div>
+    <div class="friendInfo">
+        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+        <p>Savoir Bernecotte Laurelle</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
+        <p>Savoir Bernecottirone Laurelle</p>
+    </div>
+    <div class="friendInfo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+        <p>Lars-Christian Christoffersson</p>
+    </div>
+    </div>

@@ -29,6 +29,14 @@ namespace UltraDatingHT17.Controllers
                 }
 
                 ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                //Test för första post
+                //PostContext pb = new PostContext();
+                //pb.Posts.Add(new Entities.Post
+                //{
+                //    Content = "Test test hej hå",
+                //    Author = user,
+                //    ShoutboxOwner = user
+                //});
 
                 if (user == null)
                 {
@@ -129,6 +137,21 @@ namespace UltraDatingHT17.Controllers
         public ActionResult Community()
         {
             return View(db.Users.ToList());
+        }
+
+        public ActionResult Search(string name = "")
+        {
+            List<ApplicationUser> matchedUsers = new List<ApplicationUser>();
+            matchedUsers.AddRange(db.Users.ToList().Where(i => (i.Firstname + ' ' + i.Lastname).Contains(name)));
+
+            if (matchedUsers != null)
+            {
+                return View(matchedUsers);
+            }
+            else
+            {
+                return View(db.Users.ToList());
+            }
         }
 
         public ActionResult LogIn()
