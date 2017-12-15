@@ -12,6 +12,7 @@ namespace UltraDatingHT17.Models
 
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+        public string Profilename { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -35,5 +36,5 @@ namespace UltraDatingHT17.Models
         }
     }
 
-    
+
 }

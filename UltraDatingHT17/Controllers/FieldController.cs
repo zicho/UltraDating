@@ -20,6 +20,7 @@ namespace UltraDatingHT17.Controllers
                 {
                     var user = context.Users.SingleOrDefault(u => u.UserName == username);
 
+                    if(user != null) { 
                     string fullName = string.Concat(new string[] { user.Firstname, " ", user.Lastname });
                     string firstName = user.Firstname;
                     string lastName = user.Lastname;
@@ -27,6 +28,7 @@ namespace UltraDatingHT17.Controllers
                     ViewData.Add("FullName", fullName);
                     ViewData.Add("FirstName", firstName);
                     ViewData.Add("LastName", lastName);
+                    }
                 }
             }
             base.OnActionExecuted(filterContext);

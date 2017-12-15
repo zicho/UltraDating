@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<UltraDatingHT17.Models.ApplicationUser>
+
+@{
     ViewBag.Title = "Community";
     ViewBag.TitleBar = "Community";
     ViewBag.Activate = "community";
@@ -28,23 +30,33 @@
 </style>
 <h2>User search</h2>
 <input type="text" />
-<button class="btn">Search</button>
 
-<div id="friendList">
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Christian Reuter</p>
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Savoir Bernecotte Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
-        <p>Savoir Bernecottirone Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Lars-Christian Christoffersson</p>
-    </div>
-</div>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firstname)
+        </td>
+        </tr>
+}
+
+        <button class="btn">Search</button>
+
+        <div id="friendList">
+            <div class="friendInfo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+                <p>Christian Reuter</p>
+            </div>
+            <div class="friendInfo">
+                <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+                <p>Savoir Bernecotte Laurelle</p>
+            </div>
+            <div class="friendInfo">
+                <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
+                <p>Savoir Bernecottirone Laurelle</p>
+            </div>
+            <div class="friendInfo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+                <p>Lars-Christian Christoffersson</p>
+            </div>
+        </div>
