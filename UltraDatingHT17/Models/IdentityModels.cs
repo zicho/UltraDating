@@ -14,8 +14,6 @@ namespace UltraDatingHT17.Models
         public string Lastname { get; set; }
         public string Profilename { get; set; }
 
-        public string ProfileInfo { get; set; }
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
