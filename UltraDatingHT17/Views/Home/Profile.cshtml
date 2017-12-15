@@ -16,7 +16,10 @@
     <div id="columns">
         <div>
             <img class="profile-image" src="http://www.bayareacatrescue.org/images/bayareacatrescue_logo.gif">
-            <input type="submit" value="Change picture" class="btn">
+            @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+            {
+                <input type="submit" value="Change picture" class="btn">
+            }
         </div>    
 
         <div>
@@ -35,9 +38,9 @@
         <div>
             <h2>Biography</h2>
             <p>
-                <b>Name:</b> @Model.Firstname @Model.Lastname<br />
-                <b>Age</b><br />
-                <b>Email:</b>@Model.Email<br />
+                <b>Name: </b>@Model.Firstname @Model.Lastname<br />
+                <b>Age: </b><br />
+                <b>Email: </b>@Model.Email<br />
                 <br />
 
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rhoncus ex nec ligula vulputate aliquet. In scelerisque feugiat sapien eu blandit. Curabitur non neque in ex scelerisque porttitor vitae ac turpis. Pellentesque id erat gravida, ultrices
@@ -45,9 +48,15 @@
                 pharetra mauris. Nulla facilisi. In nec leo a orci lobortis blandit in pretium erat.
             </p>
             <br />
-            <input type="submit" value="Edit Profile" class="btn right">
-           
-        </div>
+
+                        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+            {
+                            <a href="@Url.Action("EditProfile", "Home", new { username = @Model.Profilename })">
+                                <span class="right">Edit Profile</span>
+                            </a>
+                        }
+
+</div>
     </div>
 
 <div id="shoutbox-posts">

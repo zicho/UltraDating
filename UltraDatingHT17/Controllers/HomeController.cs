@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -42,6 +43,73 @@ namespace UltraDatingHT17.Controllers
             }
 
             return View();
+        }
+
+        public ActionResult EditProfile(string username)
+        {
+            try
+            {
+                if (username == null)
+                {
+                    RedirectToAction("Index", "Home");
+                }
+
+                var user = db.Users.FirstOrDefault(u => u.Profilename == username);
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(user);
+            }
+            catch
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(ApplicationUser editedUser)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Profilename == editedUser.Profilename);
+                    
+                    if (editedUser.Firstname.Any(char.IsDigit))
+                    {
+                        Response.Write("Names can't contain numbers!");
+
+                        return View();
+                    }
+                    if (editedUser.Lastname.Any(char.IsDigit))
+                    {
+                        Response.Write("Names can't contain numbers!");
+
+                        return View();
+                    }
+
+                    user.Firstname = editedUser.Firstname;
+                    user.Lastname = editedUser.Lastname;
+                    
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    return RedirectToAction("Profile", "Home", new { username = user.Profilename});
+
+                }
+                catch
+                {
+                    RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View();
+
         }
 
         public ActionResult Contact()
