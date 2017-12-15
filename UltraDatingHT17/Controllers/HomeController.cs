@@ -29,6 +29,14 @@ namespace UltraDatingHT17.Controllers
                 }
 
                 ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                //Test för första post
+                //PostContext pb = new PostContext();
+                //pb.Posts.Add(new Entities.Post
+                //{
+                //    Content = "Test test hej hå",
+                //    Author = user,
+                //    ShoutboxOwner = user
+                //});
 
                 if (user == null)
                 {
