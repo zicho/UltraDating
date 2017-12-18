@@ -13,8 +13,13 @@ namespace UltraDatingHT17.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        private static Random rnd = new Random();
+
         public ActionResult Index()
         {
+            var users = db.Users.ToList();
+
+            ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1);
 
             return View();
         }
