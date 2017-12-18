@@ -25,11 +25,15 @@
 
     <div>
         <h2>Random User</h2>
-        @foreach(var user in ViewBag.RandomUsers)
-        {
-            <p>@user.Firstname @user.Lastname</p>
-        }
-    </div>
+                        @foreach (var user in ViewBag.RandomUsers)
+                        {
+                            <span>
+                                <a href="@Url.Action("Profile", "Home", new { username = user.Profilename })">
+                                    @user.Firstname @user.Lastname
+                                </a>
+                            </span>
+                        }
+</div>
 
     <div>
         <h2>Here?</h2>

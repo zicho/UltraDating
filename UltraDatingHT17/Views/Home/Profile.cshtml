@@ -51,9 +51,11 @@
 
                         @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
-                            <a href="@Url.Action("EditProfile", "Home", new { username = @Model.Profilename })">
-                                <span class="right">Edit Profile</span>
-                            </a>
+                            <span class="right">
+                                <a href="@Url.Action("EditProfile", "Home", new { username = @Model.Profilename })">
+                                    Edit Profile
+                                </a>
+                            </span>
                         }
 
 </div>
