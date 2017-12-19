@@ -14,6 +14,9 @@ namespace UltraDatingHT17.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Profilename { get; set; }
+
+        public string ProfileInfo { get; set; }
+
         public virtual ICollection<ApplicationUser> Friends { get; set; }
         public virtual ICollection <ApplicationUser> FriendRequests { get; set; }
 
