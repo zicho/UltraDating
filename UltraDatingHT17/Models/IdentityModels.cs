@@ -37,6 +37,11 @@ namespace UltraDatingHT17.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public ApplicationUser()
+        {
+            this.Friends = new HashSet<ApplicationUser>();
+            this.FriendRequests = new HashSet<ApplicationUser>();
+        }
     }
 
     public class Shout
