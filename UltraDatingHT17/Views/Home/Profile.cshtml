@@ -14,7 +14,7 @@
 }
 
     <div id="columns">
-        <div>
+        <div class="profile-pic">
             <img class="profile-image" src="http://www.bayareacatrescue.org/images/bayareacatrescue_logo.gif">
             @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
@@ -22,7 +22,7 @@
             }
         </div>    
 
-        <div>
+        <div class="profile-friends">
             <h2>Friends</h2>
             <ul class="friend-list">
                 <li>Username Surname</li>
@@ -35,7 +35,7 @@
             <span><a href="">View all...</a></span>
         </div>
 
-        <div>
+        <div class="profile-bio">
             <h2>Biography</h2>
             <p>
                 <b>Name: </b>@Model.Firstname @Model.Lastname<br />
@@ -57,10 +57,10 @@
 
 </div>
     </div>
-
+<br />
 <div id="shoutbox-posts">
 
-    <h2>{{ username's }} shoutbox:</h2>
+    <h2>@Model.Profilename's shoutbox:</h2>
 
     <div class="shoutbox-entry">
         <span class="shoutbox-entry-author"><b>Martin</b></span> - <span class="shoutbox-entry-date">December 12th, 2017 / 13:47</span>
@@ -74,7 +74,7 @@
 <hr /><br />
 <div id="shoutbox-form">
     <form action="">
-        <h2>Leave a message for {{ username }}</h2>
+        <h2>Leave a message for @Model.Profilename</h2>
 
         <textarea class="shoutbox-entry-content-input" name="shoutbox-entry-content-input" placeholder="Write something..." resize="no"></textarea>
 

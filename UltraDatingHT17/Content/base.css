@@ -53,7 +53,7 @@ h2 {
 .errorlist li { list-style: none;}
 
 .red {
-    color: #a30f2d !important
+    color: #a30f2d!important
 }
 
 hr {
@@ -129,6 +129,7 @@ hr {
     }
 
 #content {
+    width: 70%;
     position: absolute;
     z-index: -1;
 }
@@ -176,8 +177,9 @@ hr {
 }
 
 #columns {
+    position: relative;
+    width: 100%;
     display: flex;
-    flex-direction: columns;
 }
 
     #columns div {
@@ -258,6 +260,26 @@ textarea {
     padding: 0;
 }
 
+.profile-pic {
+    flex: 1;
+}
+
+.profile-friends {
+    flex: 1;
+}
+
+.profile-bio {
+    flex: 10;
+}
+
+.index-users {
+    flex: 1;
+}
+
+.index-welcome {
+    flex: 4;
+}
+
 .active:hover {
     background-color: #750b20;
 }
@@ -322,6 +344,11 @@ textarea {
 @media screen and (max-width: 799px) {
     #dropdown {
         text-align: center;
+    }
+
+
+    #content {
+        width: 96%;
     }
 
         #dropdown a {
