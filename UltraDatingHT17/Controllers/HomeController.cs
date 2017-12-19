@@ -17,19 +17,19 @@ namespace UltraDatingHT17.Controllers
 
         public ActionResult Index()
         {
-            var greger = db.Users.Single(x => x.Firstname == "Jävlar");
+            //var greger = db.Users.Single(x => x.Firstname == "Jävlar");
             //greger.Friends.Add(db.Users.Single(x => x.Firstname == "Raskal"));
             //db.SaveChanges();
-            var gregersvänner = greger.Friends.ToList();
+            //var gregersvänner = greger.Friends.ToList();
             //var friendTestString = "Gregers vänner: ";
             //foreach(var friend in gregersvänner)
             //{
             //    friendTestString += friend.Firstname;
             //}
             //ViewBag.Friends = friendTestString;
-            //var users = db.Users.ToList();
+            var users = db.Users.ToList();
 
-            ViewBag.RandomUsers = gregersvänner;/*users.OrderBy(x => rnd.Next()).Take(1);*/
+            ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1);
 
             return View();
         }
