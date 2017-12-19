@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace UltraDatingHT17.Models
 {
@@ -13,6 +14,8 @@ namespace UltraDatingHT17.Models
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Profilename { get; set; }
+        public virtual ICollection<ApplicationUser> Friends { get; set; }
+        public virtual ICollection <ApplicationUser> FriendRequests { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -23,12 +26,21 @@ namespace UltraDatingHT17.Models
         }
     }
 
+    public class Shout
+    {
+        public int id { get; set; }
+        public string Content { get; set; }
+        public virtual ApplicationUser Author { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Shout> Shouts { get; set; }
 
         public static ApplicationDbContext Create()
         {
