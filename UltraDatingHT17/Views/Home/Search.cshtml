@@ -5,41 +5,106 @@
     ViewBag.TitleBar = "Searching profiles";
     ViewBag.Activate = "community";
 }
+<style>
+    #friendList {
+        width: 100%;
+        float: left;
+    }
 
-<table class="table">
+    .friendInfo {
+        width: 25%;
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        vertical-align: top;
+    }
+
+        .friendInfo img {
+            height: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            clear: both;
+        }
+</style>
+<div id="friendList">
+    @if (Model.Count() != 0)
+    {
+        foreach (var item in Model)
+        {
+            <div class="friendInfo">
+                @if (item.ProfilePicture != null)
+                {
+                    <img src="@Url.Action("GetImage", "Home", new { id = item.Id })" />
+                }
+                else
+                {
+                    <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
+                }
+                <p>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</p>
+
+
+                @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
+                {
+                    <p>You</p>
+                }
+                else
+                {
+                    <p><a href="@Url.Action("AddFriend", "Home", new { friendProfileName = item.Profilename })">Add me!</a></p>
+                }
+
+            </div>
+        }
+    }
+    else
+    {
+        <h2><i class="gray">No matches.</i></h2>
+    }
+</div>
+    @*@*<table class="table">
     <tr>
         <th>
             <h2><b>Matched users:</b_></h2>
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
-
-@if(Model.Count() != 0) { 
-foreach (var item in Model) {
-    <tr>
-        <td>
-            <span>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</span>
-        </td>
-        
-        @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
-        {
-        <td><p>(You)</p></td>
-        }
-        else
-        {
-        <td>
-            @Html.ActionLink("Add Friend", "Edit", new { id = item.Id }) 
-        </td>
-        }
-        
-    </tr>
-    }
+@*<table>
+    @if(Model.Count() != 0) {
+    foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.ProfilePicture != null)
+    {
+            <img class="friendlist" src="@Url.Action("GetImage", "Home", new { id = item.Id })" />
 }
 else
 {
-    
-    <tr><td><h2><i class="gray">No matches.</i></h2></td></tr>
+            <img class="profile-image" src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
 }
+            </td>
+            <td>
+                <span>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</span>
+            </td>
 
-</table>
+            @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
+            {
+            <td><p>(You)</p></td>
+            }
+            else
+            {
+            <td>
+                @Html.ActionLink("AddFriend", "Home", new { id = item.Id })
+            </td>
+            }
+
+        </tr>
+        }
+    }
+    else
+    {
+
+        <tr><td><h2><i class="gray">No matches.</i></h2></td></tr>
+    }
+
+    </table>*@

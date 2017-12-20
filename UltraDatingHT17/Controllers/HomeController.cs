@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
@@ -45,14 +46,7 @@ namespace UltraDatingHT17.Controllers
                 }
 
                 ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
-                //Test för första post
-                //PostContext pb = new PostContext();
-                //pb.Posts.Add(new Entities.Post
-                //{
-                //    Content = "Test test hej hå",
-                //    Author = user,
-                //    ShoutboxOwner = user
-                //});
+                
 
                 if (user == null)
                 {
@@ -192,10 +186,29 @@ namespace UltraDatingHT17.Controllers
             return View();
         }
 
-        public ActionResult Friends()
+        public ActionResult Friends(string username)
         {
+            try
+            {
+                if (username == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
 
 
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(user);
+            }
+            catch
+            {
+                RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -223,6 +236,23 @@ namespace UltraDatingHT17.Controllers
         {
 
             return View();
+        }
+        public ActionResult AddFriend(String friendProfilename)
+        {
+            try
+            {
+                var currentUserId = User.Identity.GetUserId();
+                var currentUser = db.Users.SingleOrDefault(x => x.Id == currentUserId);
+                var newFriend = db.Users.SingleOrDefault(x => x.Profilename == friendProfilename);
+                currentUser.Friends.Add(newFriend);
+                db.SaveChanges();
+                return RedirectToAction("Friends", "Home");
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw;
+            }
         }
     }
 }
