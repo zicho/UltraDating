@@ -239,8 +239,9 @@ namespace UltraDatingHT17.Controllers
                 var currentUser = db.Users.SingleOrDefault(x => x.Id == currentUserId);
                 var newFriend = db.Users.SingleOrDefault(x => x.Id == friendId);
                 currentUser.Friends.Add(newFriend);
+                newFriend.Friends.Add(currentUser);
                 db.SaveChanges();
-                return RedirectToAction("Friends", "Home");
+                return RedirectToAction("Friends", "Home", new { id = currentUserId });
             }
             catch (Exception e)
             {
