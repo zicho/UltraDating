@@ -119,6 +119,7 @@ namespace UltraDatingHT17.Controllers
                     user.Firstname = editedUser.Firstname;
                     user.Lastname = editedUser.Lastname;
                     user.ProfileInfo = editedUser.ProfileInfo;
+                    user.IsSearchable = editedUser.IsSearchable;
 
                     db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
