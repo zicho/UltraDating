@@ -15,7 +15,6 @@
 
     <div id="columns">
         <div class="profile-pic">
-            <img src="@Url.Action("GetImage", new { username = Model.Profilename }) />
             @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
                 using (Html.BeginForm("UploadPicture", "Home", new { username = Model.Profilename }, FormMethod.Post, new { enctype = "multipart/form-data" }))
