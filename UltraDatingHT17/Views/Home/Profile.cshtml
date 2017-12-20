@@ -15,10 +15,17 @@
 
     <div id="columns">
         <div class="profile-pic">
-            <img class="profile-image" src="http://www.bayareacatrescue.org/images/bayareacatrescue_logo.gif">
+            <img src="@Url.Action("GetImage", new { username = Model.Profilename }) />
             @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
-                <input type="submit" value="Change picture" class="btn">
+                using (Html.BeginForm("UploadPicture", "Home", new { username = Model.Profilename }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <input type="file" name="image" class="btn" />
+                    <input type="submit" class="btn" value="Submit" />
+                
+                }
             }
         </div>    
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -66,6 +67,53 @@ namespace UltraDatingHT17.Controllers
             }
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult UploadPicture(string username, HttpPostedFileBase image)
+        {
+            try
+            {
+                if (username == null)
+                {
+                    RedirectToAction("Index", "Home");
+                }
+
+                var user = db.Users.FirstOrDefault(u => u.Profilename == username);
+
+                if(image != null && image.ContentLength > 0){
+                    user.Filename = image.FileName;
+                    user.ContentType = image.ContentType;
+
+                    using (var reader = new BinaryReader(image.InputStream))
+                    {
+                        user.ProfilePicture = reader.ReadBytes(image.ContentLength);
+                    }
+
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return RedirectToAction("Profile", "Home", new { username = user.Profilename });
+            }
+            catch
+            {
+                RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        public ActionResult GetImage(string username)
+        {
+            var user = db.Users.FirstOrDefault(u => u.Profilename == username);
+            return File(user.ProfilePicture, user.ContentType);
         }
 
         public ActionResult EditProfile(string username)

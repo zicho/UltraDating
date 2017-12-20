@@ -31,9 +31,14 @@ namespace UltraDatingHT17.Models
         [Display(Name = "Profile Info")]
         public string ProfileInfo { get; set; }
 
+        [Display(Name = "Profile Pic")]
+        public byte[] ProfilePicture { get; set; }
+        public string Filename { get; set; }
+        public string ContentType { get; set; }
+
         public virtual ICollection<ApplicationUser> Friends { get; set; }
         public virtual ICollection <ApplicationUser> FriendRequests { get; set; }
-
+        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
