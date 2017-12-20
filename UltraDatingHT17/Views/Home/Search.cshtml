@@ -2,23 +2,24 @@
 
 @{
     ViewBag.Title = "Search";
+    ViewBag.TitleBar = "Searching profiles";
+    ViewBag.Activate = "community";
 }
-
-<h2>Search</h2>
-
 
 <table class="table">
     <tr>
         <th>
-            <p><b>Matched users:</b_></p>
+            <h2><b>Matched users:</b_></h2>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+
+@if(Model.Count() != 0) { 
+foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] },null );
+            <span>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</span>
         </td>
         
         @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
@@ -33,6 +34,12 @@
         }
         
     </tr>
+    }
+}
+else
+{
+    
+    <tr><td><h2><i class="gray">No matches.</i></h2></td></tr>
 }
 
 </table>

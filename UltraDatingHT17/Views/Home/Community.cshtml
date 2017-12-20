@@ -34,19 +34,10 @@
 
 }
 
-
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firstname)
-        </td>
-    </tr>
-}
 <p>
     @using (Html.BeginForm("Search", "Home", FormMethod.Get))
     {
-        @Html.TextBox("name") <input type="submit" value="Search" />
+        @Html.TextBox("name") <input type="submit" class="btn right" value="Search" />
     }
 </p>
 @*<input type="text" id="searchBox" />

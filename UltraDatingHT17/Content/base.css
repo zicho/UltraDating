@@ -53,7 +53,11 @@ h2 {
 .errorlist li { list-style: none;}
 
 .red {
-    color: #a30f2d!important
+    color: #a30f2d!important;
+}
+
+.gray {
+    color: #888!important; 
 }
 
 hr {
@@ -323,6 +327,11 @@ textarea {
 }
 
 @media screen and (max-width: 1599px) and (min-width: 800px) {
+   
+    #content {
+        width: 90%;
+    }
+
     #main-menu .icon {
         display: none;
     }
