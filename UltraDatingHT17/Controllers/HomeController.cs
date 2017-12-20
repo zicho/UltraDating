@@ -35,16 +35,16 @@ namespace UltraDatingHT17.Controllers
             return View();
         }
 
-        public new ActionResult Profile(string username)
+        public new ActionResult Profile(string id)
         {
             try
             {
-                if (username == null)
+                if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == id);
                 //Test för första post
                 //PostContext pb = new PostContext();
                 //pb.Posts.Add(new Entities.Post
@@ -70,16 +70,16 @@ namespace UltraDatingHT17.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadPicture(string username, HttpPostedFileBase image)
+        public ActionResult UploadPicture(string id, HttpPostedFileBase image)
         {
             try
             {
-                if (username == null)
+                if (id == null)
                 {
                     RedirectToAction("Index", "Home");
                 }
 
-                var user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                var user = db.Users.FirstOrDefault(u => u.Id == id);
 
                 if(image != null && image.ContentLength > 0){
                     user.Filename = image.FileName;
@@ -100,7 +100,7 @@ namespace UltraDatingHT17.Controllers
                     return HttpNotFound();
                 }
 
-                return RedirectToAction("Profile", "Home", new { username = user.Profilename });
+                return RedirectToAction("Profile", "Home", new { id = user.Id });
             }
             catch
             {
@@ -116,16 +116,16 @@ namespace UltraDatingHT17.Controllers
             return File(image.ProfilePicture, image.ContentType);
         }
 
-        public ActionResult EditProfile(string username)
+        public ActionResult EditProfile(string id)
         {
             try
             {
-                if (username == null)
+                if (id == null)
                 {
                     RedirectToAction("Index", "Home");
                 }
 
-                var user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                var user = db.Users.FirstOrDefault(u => u.Id == id);
 
                 if (user == null)
                 {
@@ -149,21 +149,8 @@ namespace UltraDatingHT17.Controllers
             {
                 try
                 {
-                    var user = db.Users.FirstOrDefault(u => u.Profilename == editedUser.Profilename);
-                    
-                    if (editedUser.Firstname.Any(char.IsDigit))
-                    {
-                        Response.Write("Names can't contain numbers!");
-
-                        return View();
-                    }
-                    if (editedUser.Lastname.Any(char.IsDigit))
-                    {
-                        Response.Write("Names can't contain numbers!");
-
-                        return View();
-                    }
-
+                    var user = db.Users.FirstOrDefault(u => u.Id == editedUser.Id);
+                   
                     user.Firstname = editedUser.Firstname;
                     user.Lastname = editedUser.Lastname;
                     user.ProfileInfo = editedUser.ProfileInfo;
@@ -172,7 +159,7 @@ namespace UltraDatingHT17.Controllers
                     db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
 
-                    return RedirectToAction("Profile", "Home", new { username = user.Profilename});
+                    return RedirectToAction("Profile", "Home", new { id = user.Id});
 
                 }
                 catch

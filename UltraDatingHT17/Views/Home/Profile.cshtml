@@ -23,7 +23,7 @@
             }
             @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
-                using (Html.BeginForm("UploadPicture", "Home", new { username = Model.Profilename }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                using (Html.BeginForm("UploadPicture", "Home", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
              
@@ -60,10 +60,10 @@
             </p>
             <br />
 
-                        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+                        @if (HttpContext.Current.User.Identity.Equals(Model.Id))
             {
                             <span class="right">
-                                <a href="@Url.Action("EditProfile", "Home", new { username = @Model.Profilename })">
+                                <a href="@Url.Action("EditProfile", "Home", new { id = @Model.Id })">
                                     Edit Profile
                                 </a>
                             </span>
@@ -74,7 +74,7 @@
 <br />
 <div id="shoutbox-posts">
 
-    <h2>@Model.Profilename's shoutbox:</h2>
+    <h2>@Model.Firstname's shoutbox:</h2>
 
     <div class="shoutbox-entry">
         <span class="shoutbox-entry-author"><b>Martin</b></span> - <span class="shoutbox-entry-date">December 12th, 2017 / 13:47</span>
@@ -88,7 +88,7 @@
 <hr /><br />
 <div id="shoutbox-form">
     <form action="">
-        <h2>Leave a message for @Model.Profilename</h2>
+        <h2>Leave a message for @Model.Firstname</h2>
 
         <textarea class="shoutbox-entry-content-input" name="shoutbox-entry-content-input" placeholder="Write something..." resize="no"></textarea>
 

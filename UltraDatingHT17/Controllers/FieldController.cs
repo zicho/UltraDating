@@ -25,11 +25,13 @@ namespace UltraDatingHT17.Controllers
                     string firstName = user.Firstname;
                     string lastName = user.Lastname;
                     string profileName = user.Profilename;
+                    string Id = user.Id;
 
-                    ViewData.Add("FullName", fullName);
+                        ViewData.Add("FullName", fullName);
                     ViewData.Add("FirstName", firstName);
                     ViewData.Add("LastName", lastName);
                     ViewData.Add("ProfileName", profileName);
+                        ViewData.Add("Id", Id);
                     }
                 }
             }

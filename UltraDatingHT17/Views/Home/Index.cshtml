@@ -32,7 +32,7 @@
                 if (User.Identity.IsAuthenticated)
                 {
                             <span>
-                                <a href="@Url.Action("Profile", "Home", new { username = user.Profilename })">
+                                <a href="@Url.Action("Profile", "Home", new { id = user.Id })">
                                     @user.Firstname @user.Lastname
                                 </a>
                             </span>
