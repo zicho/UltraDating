@@ -48,6 +48,9 @@ namespace UltraDatingHT17.Models
         }
         public ApplicationUser()
         {
+
+            IsSearchable = true;
+
             this.Friends = new HashSet<ApplicationUser>();
             this.FriendRequests = new HashSet<ApplicationUser>();
         }
