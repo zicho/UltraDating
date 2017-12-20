@@ -158,7 +158,7 @@ namespace UltraDatingHT17.Controllers
         public ActionResult Search(string name = "")
         {
             List<ApplicationUser> matchedUsers = new List<ApplicationUser>();
-            matchedUsers.AddRange(db.Users.ToList().Where(i => (i.Firstname.ToLower() + ' ' + i.Lastname.ToLower()).Contains(name.ToLower())));
+            matchedUsers.AddRange(db.Users.ToList().Where(i => (i.Firstname.ToLower() + ' ' + i.Lastname.ToLower()).Contains(name.ToLower()) && i.IsSearchable == true));
 
             if (matchedUsers != null)
             {
