@@ -1,4 +1,4 @@
-﻿
+﻿@model UltraDatingHT17.Models.ApplicationUser
 @{
     ViewBag.Title = "Friends";
     ViewBag.TitleBar = "Friends";
@@ -13,12 +13,14 @@
         width: 100%;
         float: left;
     }
-    #friendList img {
-        height: 100%;
-        max-height: 60px;
-        object-fit: contain;
-        clear:both;
-    }
+
+        #friendList img {
+            height: 100%;
+            max-height: 60px;
+            object-fit: contain;
+            clear: both;
+        }
+
     .friendInfo {
         width: 25%;
         display: inline-block;
@@ -32,19 +34,22 @@
         display: block;
         width: 100%;
     }
+
     .requestBox {
         width: 100%;
         height: auto;
         float: left;
         margin-bottom: 10px;
     }
-    .requestBox img {
-        float:left;
-        height: 100%;
-        max-height: 120px;
-        object-fit: contain;
-    }
-    .requestInfo{
+
+        .requestBox img {
+            float: left;
+            height: 100%;
+            max-height: 120px;
+            object-fit: contain;
+        }
+
+    .requestInfo {
         float: left;
         padding: 5px;
         vertical-align: middle;
@@ -53,7 +58,7 @@
 
 
 <div id="pendingRequests">
-    <h2>Requests</h2>
+    <h2>Requests (Vi är fejk)</h2>
     <div class="requestBox">
         <p>Mette Marit</p>
         <img src="http://www.postcardfromholland.com/portrait_small.jpg" />
@@ -77,40 +82,67 @@
 
 <div id="friendList">
     <h2>Friends</h2>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Christian Reuter</p>    
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Savoir Bernecotte Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
-        <p>Savoir Bernecottirone Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Lars-Christian Christoffersson</p>
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Lars Leijonborg</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Carl Ek</p>
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Olyckan Problemo</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Carln Reuter</p>
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Savoir Bernecotte Laurelle</p>
-    </div>
+
+    @if (Model.Friends.Count() != 0)
+    {
+        foreach (var friend in Model.Friends)
+        {
+            <div class="friendInfo">
+                @if (friend.ProfilePicture != null)
+                {
+                    <img src="@Url.Action("GetImage", "Home", new { id = friend.Id })" />
+                }
+                else
+                {
+                    <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
+                }
+                <p>
+                    <a href="@Url.Action("Profile", "Home", new { username = friend.Profilename })">
+                        @friend.Firstname @friend.Lastname
+                    </a>
+                </p>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Du har inga vänner!</p>
+    }
+
 </div>
+    @*<div class="friendInfo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+            <p>Christian Reuter</p>
+        </div>
+        <div class="friendInfo">
+            <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+            <p>Savoir Bernecotte Laurelle</p>
+        </div>
+        <div class="friendInfo">
+            <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
+            <p>Savoir Bernecottirone Laurelle</p>
+        </div>
+        <div class="friendInfo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+            <p>Lars-Christian Christoffersson</p>
+        </div>
+        <div class="friendInfo">
+            <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+            <p>Lars Leijonborg</p>
+        </div>
+        <div class="friendInfo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+            <p>Carl Ek</p>
+        </div>
+        <div class="friendInfo">
+            <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+            <p>Olyckan Problemo</p>
+        </div>
+        <div class="friendInfo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
+            <p>Carln Reuter</p>
+        </div>
+        <div class="friendInfo">
+            <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
+            <p>Savoir Bernecotte Laurelle</p>
+        </div>*@
