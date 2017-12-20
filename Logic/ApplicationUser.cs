@@ -24,6 +24,9 @@ namespace UltraDatingHT17.Models
 
         public string Profilename { get; set; }
 
+        [Display(Name = "Include your profile in search?")]
+        public bool IsSearchable { get; set; }
+
         [StringLength(420, ErrorMessage = "Your profile must be between 3 and 420 characters long.", MinimumLength = 3)]
         [Display(Name = "Profile Info")]
         public string ProfileInfo { get; set; }

@@ -36,6 +36,13 @@
             </div>
         </div>
         <br />
+        <div>
+            @Html.LabelFor(model => model.IsSearchable)
+            <div class="search-edit right">
+                @Html.EditorFor(model => model.IsSearchable, new { cols = 70, @rows = 8 })
+            </div>
+        </div>
+        <br />
         <div style="display: none;">
             <div class="form-group">
 
