@@ -60,7 +60,7 @@
             </p>
             <br />
 
-                        @if (HttpContext.Current.User.Identity.Equals(Model.Id))
+                        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
             {
                             <span class="right">
                                 <a href="@Url.Action("EditProfile", "Home", new { id = @Model.Id })">

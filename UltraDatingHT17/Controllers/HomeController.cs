@@ -45,7 +45,7 @@ namespace UltraDatingHT17.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == id);
                 //Test för första post
                 //PostContext pb = new PostContext();
                 //pb.Posts.Add(new Entities.Post
@@ -180,16 +180,16 @@ namespace UltraDatingHT17.Controllers
             return View();
         }
 
-        public ActionResult Friends(string username)
+        public ActionResult Friends(string id)
         {
             try
             {
-                if (username == null)
+                if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
 
-                ApplicationUser user = db.Users.FirstOrDefault(u => u.Profilename == username);
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == id);
 
 
                 if (user == null)
@@ -231,13 +231,13 @@ namespace UltraDatingHT17.Controllers
 
             return View();
         }
-        public ActionResult AddFriend(String friendProfilename)
+        public ActionResult AddFriend(string friendId)
         {
             try
             {
                 var currentUserId = User.Identity.GetUserId();
                 var currentUser = db.Users.SingleOrDefault(x => x.Id == currentUserId);
-                var newFriend = db.Users.SingleOrDefault(x => x.Profilename == friendProfilename);
+                var newFriend = db.Users.SingleOrDefault(x => x.Id == friendId);
                 currentUser.Friends.Add(newFriend);
                 db.SaveChanges();
                 return RedirectToAction("Friends", "Home");

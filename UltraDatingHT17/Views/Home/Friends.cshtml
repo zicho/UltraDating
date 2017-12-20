@@ -97,7 +97,7 @@
                     <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
                 }
                 <p>
-                    <a href="@Url.Action("Profile", "Home", new { username = friend.Profilename })">
+                    <a href="@Url.Action("Profile", "Home", new { id = friend.Id })">
                         @friend.Firstname @friend.Lastname
                     </a>
                 </p>
