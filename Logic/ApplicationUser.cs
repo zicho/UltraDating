@@ -1,5 +1,4 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -41,28 +40,6 @@ namespace UltraDatingHT17.Models
         {
             this.Friends = new HashSet<ApplicationUser>();
             this.FriendRequests = new HashSet<ApplicationUser>();
-        }
-    }
-
-    public class Shout
-    {
-        public int id { get; set; }
-        public string Content { get; set; }
-        public virtual ApplicationUser Author { get; set; }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public DbSet<Shout> Shouts { get; set; }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
         }
     }
 
