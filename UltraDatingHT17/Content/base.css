@@ -16,6 +16,10 @@ h2 {
     color: #555;
 }
 
+#upload-file {
+    display: none;
+}
+
 #main-menu li {
     float: left;
 }
@@ -146,6 +150,8 @@ hr {
         font-weight: 700;
     }
 
+label { font-size: 13px;}
+
 .menu-items {
     letter-spacing: 2px;
 }
@@ -259,7 +265,10 @@ textarea {
 
 .profile-image {
     float: left;
-    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    max-width: 200px;
     margin: 5px 20px;
     padding: 0;
 }

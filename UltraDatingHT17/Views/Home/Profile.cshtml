@@ -26,9 +26,11 @@
                 using (Html.BeginForm("UploadPicture", "Home", new { username = Model.Profilename }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
-
-                    <input type="file" name="image" class="btn" />
-                    <input type="submit" class="btn" value="Submit" />
+             
+                    <input type="file" id="upload-file" name="image"/>
+                    
+                    <label style="margin-top: 200px;" id="upload-file-label" class="btn left" for="upload-file">Choose Picture</label><br /><br />
+                    <input type="submit" class="btn left" value="Confirm" />
                 
                 }
             }
