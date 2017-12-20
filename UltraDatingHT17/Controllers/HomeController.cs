@@ -110,6 +110,12 @@ namespace UltraDatingHT17.Controllers
             return View();
         }
 
+        public ActionResult GetImage(string id)
+        {
+            var image = db.Users.Single(x => x.Id == id);
+            return File(image.ProfilePicture, image.ContentType);
+        }
+
         public ActionResult EditProfile(string username)
         {
             try
