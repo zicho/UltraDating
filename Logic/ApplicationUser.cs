@@ -11,11 +11,13 @@ namespace UltraDatingHT17.Models
     public class ApplicationUser : IdentityUser
     {
         [Required(ErrorMessage = "You need to enter a first name.")]
+        [RegularExpression("^[A-Öa-ö]*$", ErrorMessage = @"No whitespace or numbers in first name.")]
         [StringLength(40, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "First Name *")]
         public string Firstname { get; set; }
 
         [Required(ErrorMessage = "You need to enter a last name.")]
+        [RegularExpression("^[A-Öa-ö]*$", ErrorMessage = @"No whitespace or numbers in last name.")]
         [StringLength(40, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Last Name *")]
         public string Lastname { get; set; }
