@@ -77,9 +77,8 @@
                     <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
                 }
                 <div class="requestInfo">
-                    <button class="btn accept">Accept</button>
-                    <button class="btn">Decline</button>
-                    @*onclick="location.href='@Url.Action("AcceptFriendRequest", "Friend", new { friendId = request.Id })'"*@
+                    <button class="btn accept" onclick="location.href='@Url.Action("AcceptFriendRequest", "Friend", new { friendId = request.Id })'">Accept</button>
+                    <button class="btn" onclick="location.href='@Url.Action("DeclineFriendRequest", "Friend", new { friendId = request.Id })'">Decline</button>
                 </div>
             </div>
         }
