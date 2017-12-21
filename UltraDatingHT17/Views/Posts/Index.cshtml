@@ -1,0 +1,35 @@
+﻿@model UltraDatingHT17.Controllers.PostIndexViewModel
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Posts != null)
+    {
+        foreach (var item in Model.Posts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender.UserName) posted:
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    }
+
+
+</table>

@@ -11,12 +11,12 @@ namespace UltraDatingHT17.Models
         {
         }
 
-        public DbSet<Shout> Shouts { get; set; }
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Post> Posts { get; set; }
     }
 
 
