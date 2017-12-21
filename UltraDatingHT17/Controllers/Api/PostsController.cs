@@ -11,6 +11,7 @@ namespace UltraDatingHT17.Controllers.Api
 {
     public class PostsController : ApiController
     {
+        [HttpPost]
         public void AddPost(string content, string senderId, string recipientId)
         {
             
