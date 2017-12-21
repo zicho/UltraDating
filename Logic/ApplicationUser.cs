@@ -37,7 +37,7 @@ namespace UltraDatingHT17.Models
         public string ContentType { get; set; }
 
         public virtual ICollection<ApplicationUser> Friends { get; set; }
-        public virtual ICollection <ApplicationUser> FriendRequests { get; set; }
+        public virtual ICollection<ApplicationUser> FriendRequests { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
         

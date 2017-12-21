@@ -1,5 +1,5 @@
 ﻿@model UltraDatingHT17.Models.ApplicationUser
-
+@using Microsoft.AspNet.Identity;
 @{
     ViewBag.Title = "Profile";
     if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
@@ -12,93 +12,130 @@
     }
     ViewBag.Activate = "profile";
 }
+<script src="jquery-1.7.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function AddPost() {
+        var post = {};
+        post.content = $("#postTextbox").val();
+        post.recipient = @Model.Id;
+        post.sender = @HttpContext.Current.User.Identity.GetUserId();
 
-    <div id="columns">
-        <div class="profile-pic">
+        $.ajax({
+                url: "<%=Page.ResolveUrl("/api/Posts/AddPost")%>",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(post.content,post.sender,post.recipient),
+                dataType: "json",
+                success: function (response) {
+                    alert(response);
+                },
 
-            @if(Model.ProfilePicture != null) { 
-            <img class="profile-image"  src="@Url.Action("GetImage", new { id = Model.Id })" />
-            } else { 
+                error: function (x, e) {
+                    alert('Failed');
+                    alert(x.responseText);
+                    alert(x.status);
+
+                }
+            });
+    }
+    $(document).ready(function () {
+        $("#submitButton").click(function (e) {
+
+            AddPost();
+            e.preventDefault();
+        });
+    });
+</script>
+
+<div id="columns">
+    <div class="profile-pic">
+
+        @if (Model.ProfilePicture != null)
+        {
+            <img class="profile-image" src="@Url.Action("GetImage", new { id = Model.Id })" />
+        }
+        else
+        {
             <img class="profile-image" src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
-            }
-            @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+        }
+        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+        {
+            using (Html.BeginForm("UploadPicture", "Home", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                using (Html.BeginForm("UploadPicture", "Home", new { id = Model.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    @Html.AntiForgeryToken()
-             
-                    <input type="file" id="upload-file" name="image"/>
-                    
-                    <label style="margin-top: 200px;" id="upload-file-label" class="btn left" for="upload-file">Choose Picture</label><br /><br />
-                    <input type="submit" class="btn left" value="Confirm" />
-                
-                }
+                @Html.AntiForgeryToken()
+
+                <input type="file" id="upload-file" name="image" />
+
+                <label style="margin-top: 200px;" id="upload-file-label" class="btn left" for="upload-file">Choose Picture</label><br /><br />
+                <input type="submit" class="btn left" value="Confirm" />
+
             }
-        </div>    
-
-        <div class="profile-friends">
-            <h2>Friends</h2>
-            
-                @if (Model.Friends.Count > 0)
-                {
-                    <ul class="friend-list">
-
-                        @foreach (var friend in Model.Friends)
-                        {
-                        <li><a href="@Url.Action("Profile", "Home", new { id = friend.Id })">@friend.Firstname @friend.Lastname</a></li>
-                        }
-                    </ul>
-
-                    <span><a href="">View all...</a></span>
-
-                }
-                else
-                {
-                    <span class="gray">No friends</span>
-                }
-
-            <br />
-            
-        </div>
-
-        <div class="profile-bio">
-            <h2>Biography</h2>
-            <p>
-                <b>Name: </b>@Model.Firstname @Model.Lastname<br />
-                <b>Age: </b><br />
-                <b>Email: </b>@Model.Email<br />
-                <br />
-                @Model.ProfileInfo
-            </p>
-            <br />
-
-                        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
-            {
-                            <span class="right">
-                                <a href="@Url.Action("EditProfile", "Home", new { id = @Model.Id })">
-                                    Edit Profile
-                                </a>
-                            </span>
-                        }
-                        else
-                        {
-
-                            var friends = ViewBag.friendList as IEnumerable<UltraDatingHT17.Models.ApplicationUser>;
-
-                            if (friends.Any(f => f.Id == Model.Id))
-                            {
-                                <button class="btn right">Remove Friend</button>
-                            }
-                            else
-                            {
-                                <button class="btn accept right">Add Friend</button>
-                            }
-
-                        }
-            
-
-</div>
+        }
     </div>
+
+    <div class="profile-friends">
+        <h2>Friends</h2>
+
+        @if (Model.Friends.Count > 0)
+        {
+            <ul class="friend-list">
+
+                @foreach (var friend in Model.Friends)
+                {
+                    <li><a href="@Url.Action("Profile", "Home", new { id = friend.Id })">@friend.Firstname @friend.Lastname</a></li>
+                }
+            </ul>
+
+            <span><a href="">View all...</a></span>
+
+        }
+        else
+        {
+            <span class="gray">No friends</span>
+        }
+
+        <br />
+
+    </div>
+
+    <div class="profile-bio">
+        <h2>Biography</h2>
+        <p>
+            <b>Name: </b>@Model.Firstname @Model.Lastname<br />
+            <b>Age: </b><br />
+            <b>Email: </b>@Model.Email<br />
+            <br />
+            @Model.ProfileInfo
+        </p>
+        <br />
+
+        @if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
+        {
+            <span class="right">
+                <a href="@Url.Action("EditProfile", "Home", new { id = @Model.Id })">
+                    Edit Profile
+                </a>
+            </span>
+        }
+        else
+        {
+
+            var friends = ViewBag.friendList as IEnumerable<UltraDatingHT17.Models.ApplicationUser>;
+
+            if (friends.Any(f => f.Id == Model.Id))
+            {
+                <button class="btn right">Remove Friend</button>
+            }
+            else
+            {
+                <button class="btn accept right">Add Friend</button>
+            }
+
+        }
+
+
+    </div>
+</div>
 <br />
 
 <div id="postsBoxDiv">
@@ -108,8 +145,8 @@
 </div>
 
 @*<div id="createPostDiv">
-    @Html.Partial("Create", PostIndexViewModel,"Posts");
-</div>*@
+        @Html.Partial("Create", PostIndexViewModel,"Posts");
+    </div>*@
 <div id="shoutbox-posts">
 
     <h2>@Model.Firstname's shoutbox:</h2>
@@ -128,9 +165,9 @@
     <form action="">
         <h2>Leave a message for @Model.Firstname</h2>
 
-        <textarea class="shoutbox-entry-content-input" name="shoutbox-entry-content-input" placeholder="Write something..." resize="no"></textarea>
+        <textarea class="shoutbox-entry-content-input" name="postTextbox" placeholder="Write something..." resize="no"></textarea>
 
-        <input type="submit" value="Post" class="btn right">
+        <input type="submit" name="submitButton" value="Post" class="btn right">
 
     </form>
 </div>

@@ -16,17 +16,19 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Sender.UserName) posted:
+                    @Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null) posted:
                 </td>
-                <td>
-
-                </td>
+                </tr>
+            <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Content)
                 </td>
                 <td>
                     @Html.ActionLink("Delete", "Delete", new { id = item.id })
                 </td>
+            </tr>
+            <tr>
+
             </tr>
         }
     }
