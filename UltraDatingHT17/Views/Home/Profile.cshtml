@@ -38,15 +38,27 @@
 
         <div class="profile-friends">
             <h2>Friends</h2>
-            <ul class="friend-list">
-                <li>Username Surname</li>
-                <li>Username Surname</li>
-                <li>Username Surname</li>
-                <li>Username Surname</li>
-                <li>Username Surname</li>
-            </ul>
+            
+                @if (Model.Friends.Count > 0)
+                {
+                    <ul class="friend-list">
+
+                        @foreach (var friend in Model.Friends)
+                        {
+                        <li><a href="@Url.Action("Profile", "Home", new { id = friend.Id })">@friend.Firstname @friend.Lastname</a></li>
+                        }
+                    </ul>
+
+                    <span><a href="">View all...</a></span>
+
+                }
+                else
+                {
+                    <span class="gray">No friends</span>
+                }
+
             <br />
-            <span><a href="">View all...</a></span>
+            
         </div>
 
         <div class="profile-bio">
@@ -68,6 +80,19 @@
                                 </a>
                             </span>
                         }
+                        else
+                        {
+                            if (@ViewBag.friendList.Contains(@Model))
+                            {
+                                <p>Boona</p>
+                            }
+                            else
+                            { <button class="btn accept right">Add Friend</button> 
+                           
+                            }
+
+                        }
+            
 
 </div>
     </div>

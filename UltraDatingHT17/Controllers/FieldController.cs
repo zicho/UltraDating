@@ -27,11 +27,14 @@ namespace UltraDatingHT17.Controllers
                     string profileName = user.Profilename;
                     string Id = user.Id;
 
+                        var friendList = user.Friends;
+
                         ViewData.Add("FullName", fullName);
                     ViewData.Add("FirstName", firstName);
                     ViewData.Add("LastName", lastName);
                     ViewData.Add("ProfileName", profileName);
                         ViewData.Add("Id", Id);
+                        ViewData.Add("friendList", friendList);
                     }
                 }
             }
