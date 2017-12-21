@@ -19,16 +19,6 @@ namespace UltraDatingHT17.Controllers
 
         public ActionResult Index()
         {
-            //var greger = db.Users.Single(x => x.Firstname == "Jävlar");
-            //greger.Friends.Add(db.Users.Single(x => x.Firstname == "Raskal"));
-            //db.SaveChanges();
-            //var gregersvänner = greger.Friends.ToList();
-            //var friendTestString = "Gregers vänner: ";
-            //foreach(var friend in gregersvänner)
-            //{
-            //    friendTestString += friend.Firstname;
-            //}
-            //ViewBag.Friends = friendTestString;
             var users = db.Users.ToList();
 
             ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1);
@@ -46,14 +36,6 @@ namespace UltraDatingHT17.Controllers
                 }
 
                 ApplicationUser user = db.Users.FirstOrDefault(u => u.Id == id);
-                //Test för första post
-                //PostContext pb = new PostContext();
-                //pb.Posts.Add(new Entities.Post
-                //{
-                //    Content = "Test test hej hå",
-                //    Author = user,
-                //    ShoutboxOwner = user
-                //});
 
                 if (user == null)
                 {
@@ -230,24 +212,6 @@ namespace UltraDatingHT17.Controllers
         {
 
             return View();
-        }
-        public ActionResult AddFriend(string friendId)
-        {
-            try
-            {
-                var currentUserId = User.Identity.GetUserId();
-                var currentUser = db.Users.SingleOrDefault(x => x.Id == currentUserId);
-                var newFriend = db.Users.SingleOrDefault(x => x.Id == friendId);
-                currentUser.Friends.Add(newFriend);
-                newFriend.Friends.Add(currentUser);
-                db.SaveChanges();
-                return RedirectToAction("Friends", "Home", new { id = currentUserId });
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Message);
-                throw;
-            }
         }
     }
 }

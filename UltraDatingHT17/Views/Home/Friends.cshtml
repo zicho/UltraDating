@@ -56,14 +56,43 @@
     }
 </style>
 
-
+<h2>Requests</h2>
 <div id="pendingRequests">
-    <h2>Requests (Vi är fejk)</h2>
-    <div class="requestBox">
+    @if (Model.FriendRequests.Count() != 0)
+    {
+        foreach (var request in Model.FriendRequests)
+        {
+            <div class="requestBox">
+                <p>
+                    <a href="@Url.Action("Profile", "Home", new { id = request.Id })">
+                        @request.Firstname @request.Lastname
+                    </a>
+                </p>
+                @if (request.ProfilePicture != null)
+                {
+                    <img src="@Url.Action("GetImage", "Home", new { id = request.Id })" />
+                }
+                else
+                {
+                    <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
+                }
+                <div class="requestInfo">
+                    <button class="btn accept">Accept</button>
+                    <button class="btn">Decline</button>
+                    @*onclick="location.href='@Url.Action("AcceptFriendRequest", "Friend", new { friendId = request.Id })'"*@
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Inga nya förfrågningar!</p>
+    }
+ </div>   
+    @*<div class="requestBox">
         <p>Mette Marit</p>
         <img src="http://www.postcardfromholland.com/portrait_small.jpg" />
         <div class="requestInfo">
-            <p>Ni har 5 gemensamma vänner</p>
             <button class="btn accept">Accept</button>
             <button class="btn">Decline</button>
         </div>
@@ -72,12 +101,11 @@
         <p>Gunnar Gunnarsson</p>
         <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
         <div class="requestInfo">
-            <p>Ni har 1 gemensam vän</p>
             <button class="btn accept">Accept</button>
             <button class="btn">Decline</button>
         </div>
     </div>
-</div>
+</div>*@
 
 
 <div id="friendList">

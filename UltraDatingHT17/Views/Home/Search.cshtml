@@ -32,28 +32,27 @@
     {
         foreach (var item in Model)
         {
-    <div class="friendInfo">
-        @if (item.ProfilePicture != null)
-    {
-        <img src="@Url.Action("GetImage", "Home", new { id = item.Id })" />
-}
-else
-{
-    <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
-}
-        @*<p>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</p>*@
-        <p>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { item.Id }, null)</p>
+            <div class="friendInfo">
+                @if (item.ProfilePicture != null)
+                {
+                    <img src="@Url.Action("GetImage", "Home", new { id = item.Id })" />
+                }
+                else
+                {
+                    <img src="http://www.planystech.com/wp-content/uploads/2017/03/profile-placeholder.jpg" />
+                }
+                @*<p>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { username = item.UserName.Split('@')[0] }, null)</p>*@
+                <p>@Html.ActionLink(item.Firstname + " " + item.Lastname, "Profile", "Home", new { item.Id }, null)</p>
 
-        @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
-    {
-        <p>You</p>
-}
-else
-{
-    <p><a href="@Url.Action("AddFriend", "Home", new { friendId = item.Id })">Add me!</a></p>
-}
-
-    </div>
+                @if (HttpContext.Current.User.Identity.Name.Equals(item.UserName))
+                {
+                    <p>You</p>
+                }
+                else
+                {
+                    <p><a href="@Url.Action("AddFriendRequest", "Friend", new { friendId = item.Id })">Add me!</a></p>
+                }
+            </div>
         }
     }
     else
