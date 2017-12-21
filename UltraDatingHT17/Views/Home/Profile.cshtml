@@ -82,13 +82,16 @@
                         }
                         else
                         {
-                            if (@ViewBag.friendList.Contains(@Model))
+
+                            var friends = ViewBag.friendList as IEnumerable<UltraDatingHT17.Models.ApplicationUser>;
+
+                            if (friends.Any(f => f.Id == Model.Id))
                             {
-                                <p>Boona</p>
+                                <button class="btn right">Remove Friend</button>
                             }
                             else
-                            { <button class="btn accept right">Add Friend</button> 
-                           
+                            {
+                                <button class="btn accept right">Add Friend</button>
                             }
 
                         }
