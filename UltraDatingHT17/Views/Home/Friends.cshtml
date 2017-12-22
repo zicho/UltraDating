@@ -58,7 +58,7 @@
 
 <h2>Requests</h2>
 <div id="pendingRequests">
-    @if (Model.FriendRequests.Count() != 0)
+    @if (Model.FriendRequests.Count() > 0)
     {
         foreach (var request in Model.FriendRequests)
         {

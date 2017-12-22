@@ -127,11 +127,11 @@
 
             if (friends.Any(f => f.Id == Model.Id))
             {
-                <button class="btn right">Remove Friend</button>
+                <button class="btn right" onclick="location.href='@Url.Action("RemoveFriend", "Friend", new { friendId = Model.Id })'">Remove Friend</button>
             }
             else
             {
-                <button class="btn accept right">Add Friend</button>
+                <button class="btn accept right" onclick="location.href='@Url.Action("AddFriendRequest", "Friend", new { friendId = Model.Id })'">Add Friend</button>
             }
 
         }

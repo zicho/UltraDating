@@ -43,6 +43,31 @@ namespace UltraDatingHT17.Controllers
             }
         }
 
+        public ActionResult RemoveFriend(string friendID)
+        {
+            try
+            {
+                using(var db = new ApplicationDbContext())
+                {
+                    var currentUserId = User.Identity.GetUserId();
+                    var currentUser = db.Users.SingleOrDefault(x => x.Id == currentUserId);
+                    var removedFriend = db.Users.SingleOrDefault(x => x.Id == friendID);
+
+                    currentUser.Friends.Remove(removedFriend);
+                    removedFriend.Friends.Remove(currentUser);
+
+                    db.SaveChanges();
+                    return RedirectToAction("Friends", "Home", new { id = currentUserId });
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine("Hey ho");
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public ActionResult DeclineFriendRequest(string friendId)
         {
             try
