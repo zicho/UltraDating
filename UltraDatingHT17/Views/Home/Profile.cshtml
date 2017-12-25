@@ -146,38 +146,30 @@
 </div>
 <br />
 
-<div id="postsBoxDiv">
-    <h2>Posts: </h2>
-    @*@Html.Partial("../Posts/Index",Model.Id);*@
-        @Html.Partial("../Posts/Index", new UltraDatingHT17.Controllers.PostIndexViewModel(Model.Id));
-    
-</div>
-
-@*<div id="createPostDiv">
-        @Html.Partial("Create", PostIndexViewModel,"Posts");
-    </div>*@
 <div id="shoutbox-posts">
-
     <h2>@Model.Firstname's shoutbox:</h2>
+    @*@Html.Partial("../Posts/Index",Model.Id);*@
+    @Html.Partial("../Posts/Index", new UltraDatingHT17.Controllers.PostIndexViewModel(Model.Id))
 
-    <div class="shoutbox-entry">
-        <span class="shoutbox-entry-author"><b>Martin</b></span> - <span class="shoutbox-entry-date">December 12th, 2017 / 13:47</span>
-        <p class="shoutbox-entry-content">
-            Allt e skit!
-        </p>
+   <br />
+    <div id="shoutbox-form">
+        <form action="">
+            <h2>Leave a message for @Model.Firstname</h2>
+
+            <textarea class="shoutbox-entry-content-input" id="postTextbox" placeholder="Write something..." resize="no"></textarea>
+
+            <input type="submit" id="submitButton" value="Post" class="btn right">
+
+        </form>
 
     </div>
 
 </div>
-<hr /><br />
-<div id="shoutbox-form">
-    <form action="">
-        <h2>Leave a message for @Model.Firstname</h2>
 
-        <textarea class="shoutbox-entry-content-input" id="postTextbox" placeholder="Write something..." resize="no"></textarea>
+@*<div id="createPostDiv">
+        @Html.Partial("Create", PostIndexViewModel,"Posts")
+    </div>*@
 
-        <input type="submit" id="submitButton" value="Post" class="btn right">
 
-    </form>
+    
 
-</div>

@@ -1,36 +1,23 @@
 ﻿@model UltraDatingHT17.Controllers.PostIndexViewModel
 @using Microsoft.AspNet.Identity;
-<table class="table">
-    <tr>
-        <th>
 
-        </th>
-        <th></th>
-    </tr>
     @if (Model.Posts != null)
     {
         foreach (var item in Model.Posts)
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null) posted:
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @if (HttpContext.Current.User.Identity.GetUserId().Equals(Model.Id))
-                    {
-                        @Html.ActionLink("Delete", "Delete","Posts", new { id = item.id },null)
-                    }
 
-                </td>
-            </tr>
-            <tr></tr>
+            <div class="shoutbox-entry">
+                <span class="shoutbox-entry-author"><b>@Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null)</b></span> - <span class="shoutbox-entry-date">December 12th, 2017 / 13:47</span>
+                <p class="shoutbox-entry-content">
+                    @Html.DisplayFor(modelItem => item.Content)
+                </p>
+
+                @if (HttpContext.Current.User.Identity.GetUserId().Equals(Model.Id))
+                    {
+                    @Html.ActionLink("Delete", "Delete", "Posts", new { id = item.id }, null)
+                }
+
+            </div>
+
         }
     }
-
-
-</table>
