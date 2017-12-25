@@ -1,13 +1,14 @@
 ﻿@model UltraDatingHT17.Models.ApplicationUser
 
+@{ string welcome = @UltraDatingHT17.Resources.Index.WelcomeSingle;}
 @{
-    ViewBag.Title = "Startsida";
+    ViewBag.Title = (@UltraDatingHT17.Resources.Index.Start);
     if (User.Identity.IsAuthenticated)
     {
-        ViewBag.TitleBar = "Välkommen, " + (ViewData["FirstName"]) + "!";
+        ViewBag.TitleBar = welcome+", " + (ViewData["FirstName"]) + "!";
     } else
     {
-        ViewBag.TitleBar = "Välkommen!";
+        ViewBag.TitleBar = welcome+"!";
     }
     ViewBag.Activate = "home";
     }
@@ -15,7 +16,9 @@
 <div id="columns">
 
     <div class="index-welcome">
-        <h2>Välkommen!</h2>
+        <h2>@welcome</h2>
+        <button class="btn" onclick="location.href='@Url.Action("ChangeLanguage", "Home", new { currentLanguage = welcome })'">@UltraDatingHT17.Resources.Index.ChangeLanguage</button>
+
         <p>
             @UltraDatingHT17.Resources.Index.Welcome
     @*Välkommen till Ultra Dating, stans bästa datingsite.*@

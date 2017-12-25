@@ -117,13 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
+  </data>
   <data name="NoUsers" xml:space="preserve">
     <value>No registred users yet!</value>
   </data>
   <data name="Profiles" xml:space="preserve">
     <value>Some available profiles for you to befriend!</value>
   </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start page</value>
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to UltraDating, the best dating site in town.</value>
+  </data>
+  <data name="WelcomeSingle" xml:space="preserve">
+    <value>Welcome</value>
   </data>
 </root>

@@ -61,6 +61,15 @@ namespace UltraDatingHT17.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change language.
+        /// </summary>
+        public static string ChangeLanguage {
+            get {
+                return ResourceManager.GetString("ChangeLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No registred users yet!.
         /// </summary>
         public static string NoUsers {
@@ -79,11 +88,29 @@ namespace UltraDatingHT17.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start page.
+        /// </summary>
+        public static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to UltraDating, the best dating site in town..
         /// </summary>
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string WelcomeSingle {
+            get {
+                return ResourceManager.GetString("WelcomeSingle", resourceCulture);
             }
         }
     }

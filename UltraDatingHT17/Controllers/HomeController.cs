@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -24,6 +25,23 @@ namespace UltraDatingHT17.Controllers
             ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1);
 
             return View();
+        }
+
+        public ActionResult ChangeLanguage(string currentLanguage)
+        {
+            System.Diagnostics.Debug.WriteLine("Hey ho");
+            System.Diagnostics.Debug.WriteLine(currentLanguage);
+            if (currentLanguage == "Välkommen")
+            {
+                var newCulture = CultureInfo.CreateSpecificCulture("en-GB");
+                Resources.Index.Culture = newCulture;
+            }
+            else
+            {
+                CultureInfo newCulture = CultureInfo.CreateSpecificCulture("sv-SE");
+                UltraDatingHT17.Resources.Index.Culture = newCulture;
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public new ActionResult Profile(string id)
