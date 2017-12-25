@@ -20,25 +20,17 @@ namespace UltraDatingHT17.Controllers
             }
                 
         }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Post post)
+        public ActionResult Delete(string id)
         {
             using (var db = new ApplicationDbContext())
             {
-                db.Posts.Add(post);
-
+                var post = db.Posts.Single(x => x.id.ToString().Equals(id));
+                var profileId = post.Recipient.Id;
+                db.Posts.Remove(post);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Profile/" + profileId,"Home");
             }
         }
-
-        
     }
     public class PostIndexViewModel
     {

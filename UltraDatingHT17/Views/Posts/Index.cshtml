@@ -1,8 +1,5 @@
 ﻿@model UltraDatingHT17.Controllers.PostIndexViewModel
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using Microsoft.AspNet.Identity;
 <table class="table">
     <tr>
         <th>
@@ -18,18 +15,20 @@
                 <td>
                     @Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null) posted:
                 </td>
-                </tr>
+            </tr>
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Content)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @if (HttpContext.Current.User.Identity.GetUserId().Equals(Model.Id))
+                    {
+                        @Html.ActionLink("Delete", "Delete","Posts", new { id = item.id },null)
+                    }
+
                 </td>
             </tr>
-            <tr>
-
-            </tr>
+            <tr></tr>
         }
     }
 

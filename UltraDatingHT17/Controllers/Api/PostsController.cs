@@ -12,16 +12,16 @@ namespace UltraDatingHT17.Controllers.Api
     public class PostsController : ApiController
     {
         [HttpPost]
-        public void AddPost(string content, string senderId, string recipientId)
+        public void AddPost(ApiPost apiPost)
         {
             
             using (var db = new ApplicationDbContext())
             {
                 //var senderName = post.Sender;
                 //var recipientId = post.Recipient;
-                ApplicationUser sender = db.Users.Single(x => x.Id.Equals(senderId));
-                ApplicationUser recipient = db.Users.Single(x => x.Id.Equals(recipientId));
-                Post post = new Post { Content = content, Sender = sender, Recipient = recipient };
+                ApplicationUser sender = db.Users.SingleOrDefault(x => x.Id.Equals(apiPost.SenderId));
+                ApplicationUser recipient = db.Users.SingleOrDefault(x => x.Id.Equals(apiPost.RecieverId));
+                Post post = new Post { Content = apiPost.PostContent, Sender = sender, Recipient = recipient };
                 db.Posts.Add(post);
                 db.SaveChanges();
             }
@@ -35,5 +35,12 @@ namespace UltraDatingHT17.Controllers.Api
                 return db.Posts.Include(x=>x.Sender).Include(x=>x.Recipient).ToList();
             }
         }
+    }
+
+    public class ApiPost
+    {
+        public string SenderId { get; set; }
+        public string RecieverId { get; set; }
+        public string PostContent { get; set; }
     }
 }

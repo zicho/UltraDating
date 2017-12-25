@@ -17,24 +17,29 @@
  <script>
     function AddPost() {
         var post = {};
-        post.content = $("#postTextbox").val();
-        post.recipient = '@Model.Id';
-        post.sender = '@HttpContext.Current.User.Identity.GetUserId()';
+        post.PostContent = $("#postTextbox").val();
+        post.RecieverId = '@Model.Id';
+        post.SenderId = '@HttpContext.Current.User.Identity.GetUserId()';
 
         $.ajax({
-                url: '"<%=Page.ResolveUrl("/api/Posts/AddPost")%>"',
+                //url: '"<%=Page.ResolveUrl("/api/PostsController/AddPost")%>"',
                 //url: api/Posts/AddPost,
+                url: '/api/Posts/AddPost',
                 type: "POST",
-                contentType: "application/json;charset=utf-8",
-                data: JSON.stringify(post.content,post.sender,post.recipient),
+                //contentType: "application/json;charset=utf-8",
+                //data: JSON.stringify(apiPost),
+                data: post,
                 dataType: "json",
                 success: function (response) {
                     console.log(response);
+                    location.reload(true);
                 },
                 error: function (x, e) {
-                    alert('Failed');
-                   console.log(x.responseText);
-                   console.log(x.status);
+                    console.log(post.PostContent + " " + post.PostReciever + " " + post.PostSender);
+                    console.log(x.responseText);
+                    console.log(x.status);
+                   alert('Failed');
+                   
 
                 }
             });
@@ -42,10 +47,10 @@
 
      $(document).ready(function () {
          console.log("ladd funka");
-         $("#submitButton").click(function () {
-             console.log("knapp funka");
+         $("#submitButton").click(function (e) {
+             e.preventDefault();
              AddPost();
-             //e.preventDefault();
+             
          });
      });
 </script>
@@ -144,7 +149,8 @@
 <div id="postsBoxDiv">
     <h2>Posts: </h2>
     @*@Html.Partial("../Posts/Index",Model.Id);*@
-    @Html.Partial("../Posts/Index", new UltraDatingHT17.Controllers.PostIndexViewModel(Model.Id));
+        @Html.Partial("../Posts/Index", new UltraDatingHT17.Controllers.PostIndexViewModel(Model.Id));
+    
 </div>
 
 @*<div id="createPostDiv">
