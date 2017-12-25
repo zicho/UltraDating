@@ -31,9 +31,9 @@ namespace UltraDatingHT17.Controllers
                         var friendRequests = user.FriendRequests;
 
                         ViewData.Add("FullName", fullName);
-                    ViewData.Add("FirstName", firstName);
-                    ViewData.Add("LastName", lastName);
-                    ViewData.Add("ProfileName", profileName);
+                        ViewData.Add("FirstName", firstName);
+                        ViewData.Add("LastName", lastName);
+                        ViewData.Add("ProfileName", profileName);
                         ViewData.Add("Id", Id);
                         ViewData.Add("friendList", friendList);
                         ViewData.Add("friendRequests", friendRequests);
