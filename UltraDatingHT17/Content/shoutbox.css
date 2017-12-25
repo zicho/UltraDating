@@ -1,11 +1,9 @@
 ﻿.shoutbox-entry {
-    border-bottom: 1px solid #999;
     padding-bottom: 8px;
     margin-bottom: 8px;
 }
 
     .shoutbox-entry:last-child {
-        border-bottom: 0px solid #999;
         padding-bottom: 8px;
         margin-bottom: 8px;
     }
