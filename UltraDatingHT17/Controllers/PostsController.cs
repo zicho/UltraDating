@@ -20,11 +20,11 @@ namespace UltraDatingHT17.Controllers
             }
                 
         }
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string Id)
         {
             using (var db = new ApplicationDbContext())
             {
-                var post = db.Posts.Single(x => x.id.ToString().Equals(id));
+                var post = db.Posts.Single(x => x.Id.ToString().Equals(Id));
                 var profileId = post.Recipient.Id;
                 db.Posts.Remove(post);
                 db.SaveChanges();
@@ -40,11 +40,11 @@ namespace UltraDatingHT17.Controllers
             {
 
             }
-        public PostIndexViewModel(string id)
+        public PostIndexViewModel(string Id)
         {
             using (var db = new ApplicationDbContext())
             {
-                this.Posts = db.Posts.Include(x => x.Sender).Where(i => i.Recipient.Id == id).ToList();
+                this.Posts = db.Posts.Include(x => x.Sender).Where(i => i.Recipient.Id == Id).ToList();
                 try
                 {
 
@@ -53,7 +53,7 @@ namespace UltraDatingHT17.Controllers
                 {
 
                 }
-                this.Id = id;
+                this.Id = Id;
             }
 
         }

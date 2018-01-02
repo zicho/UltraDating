@@ -7,14 +7,14 @@
         {
 
             <div class="shoutbox-entry">
-                <span class="shoutbox-entry-author"><b>@Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null)</b></span> 
+                <span class="shoutbox-entry-author"><b>@Html.ActionLink(item.Sender.Firstname + " " + item.Sender.Lastname, "Profile", "Home", new { item.Sender.Id }, null)</b> - <span class="shoutbox-entry-date">@item.Date</span></span> 
                 <p class="shoutbox-entry-content">
                     @Html.DisplayFor(modelItem => item.Content)
                 </p>
 
                 @if (HttpContext.Current.User.Identity.GetUserId().Equals(Model.Id))
                     {
-                    <span><a>@Html.ActionLink("Delete", "Delete", "Posts", new { id = item.id }, null)</a></span>
+                    <span><a>@Html.ActionLink("Delete", "Delete", "Posts", new { Id = item.Id }, null)</a></span>
                 }
 
             </div>

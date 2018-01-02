@@ -21,7 +21,7 @@ namespace UltraDatingHT17.Controllers.Api
                 //var recipientId = post.Recipient;
                 ApplicationUser sender = db.Users.SingleOrDefault(x => x.Id.Equals(apiPost.SenderId));
                 ApplicationUser recipient = db.Users.SingleOrDefault(x => x.Id.Equals(apiPost.RecieverId));
-                Post post = new Post { Content = apiPost.PostContent, Sender = sender, Recipient = recipient };
+                Post post = new Post { Content = apiPost.PostContent, Sender = sender, Recipient = recipient, Date = DateTime.Now.ToString("G"),  };
                 db.Posts.Add(post);
                 db.SaveChanges();
             }
@@ -42,5 +42,6 @@ namespace UltraDatingHT17.Controllers.Api
         public string SenderId { get; set; }
         public string RecieverId { get; set; }
         public string PostContent { get; set; }
+        public string Date { get; set; }
     }
 }
