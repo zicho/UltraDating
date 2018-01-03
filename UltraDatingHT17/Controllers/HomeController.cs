@@ -22,7 +22,7 @@ namespace UltraDatingHT17.Controllers
         {
             var users = db.Users.ToList();
 
-            ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1);
+            ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(1).ToList();
 
             return View();
         }

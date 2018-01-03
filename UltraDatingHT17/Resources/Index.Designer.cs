@@ -70,7 +70,7 @@ namespace UltraDatingHT17.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No registred users yet!.
+        ///   Looks up a localized string similar to No registered users yet!.
         /// </summary>
         public static string NoUsers {
             get {
@@ -97,7 +97,7 @@ namespace UltraDatingHT17.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to UltraDating, the best dating site in town..
+        ///   Looks up a localized string similar to Welcome to Ultra Dating, the best dating site in town..
         /// </summary>
         public static string Welcome {
             get {
