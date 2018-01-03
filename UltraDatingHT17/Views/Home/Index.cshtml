@@ -26,11 +26,11 @@
     </div>
 
     <div class="index-users">
-        @if (ViewBag.RandomUsers.Count > 0)
+        @if (ViewBag.RandomUsers.Count != 0)
         {
-        
+        <h2>
             @UltraDatingHT17.Resources.Index.Profiles
-            <h2>@*Ett axplock av tillgängliga profiler*@</h2>
+    @*Ett axplock av tillgängliga profiler*@</h2>
             foreach (var user in ViewBag.RandomUsers)
             {
                 if (User.Identity.IsAuthenticated)

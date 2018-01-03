@@ -16,10 +16,6 @@ h2 {
     color: #555;
 }
 
-#upload-file {
-    display: none;
-}
-
 #main-menu li {
     float: left;
 }
@@ -213,8 +209,13 @@ textarea {
     display: inline-block;
 }
 
+#upload-file {
+    margin-bottom: 2%
+}
+
 input[type="text"],
 input[type="password"],
+label,
 select,
 textarea {
     width: 100%; /* Full width */
