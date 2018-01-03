@@ -4,57 +4,6 @@
     ViewBag.TitleBar = "Friends";
     ViewBag.Activate = "friends";
 }
-<style>
-    #friendList, #pendingRequests {
-        margin-bottom: 20px;
-    }
-
-    #friendList {
-        width: 100%;
-        float: left;
-    }
-
-        #friendList img {
-            height: 100%;
-            max-height: 60px;
-            object-fit: contain;
-            clear: both;
-        }
-
-    .friendInfo {
-        width: 25%;
-        display: inline-block;
-        align-items: center;
-        justify-content: center;
-        vertical-align: top;
-        padding: 5px;
-    }
-
-    #pendingRequests {
-        display: block;
-        width: 100%;
-    }
-
-    .requestBox {
-        width: 100%;
-        height: auto;
-        float: left;
-        margin-bottom: 10px;
-    }
-
-        .requestBox img {
-            float: left;
-            height: 100%;
-            max-height: 120px;
-            object-fit: contain;
-        }
-
-    .requestInfo {
-        float: left;
-        padding: 5px;
-        vertical-align: middle;
-    }
-</style>
 
 <h2>Requests</h2>
 <div id="pendingRequests">
@@ -85,19 +34,19 @@
     }
     else
     {
-        <p>Inga nya förfrågningar!</p>
+        <p>No new requests!</p>
     }
 
 </div>   
 
-<div id="friendList">
+<div id="friendListFriends">
     <h2>Friends</h2>
 
     @if (Model.Friends.Count() != 0)
     {
         foreach (var friend in Model.Friends)
         {
-            <div class="friendInfo">
+            <div class="friendInfoFriends">
                 @if (friend.ProfilePicture != null)
                 {
                     <img src="@Url.Action("GetImage", "Home", new { id = friend.Id })" />
@@ -116,7 +65,7 @@
     }
     else
     {
-        <p>Du har inga vänner!</p>
+        <p>You have no friends!</p>
     }
 
 </div>

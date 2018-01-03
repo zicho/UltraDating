@@ -6,27 +6,6 @@
     ViewBag.Activate = "community";
 }
 
-@*<style>
-    #friendList {
-        width: 100%;
-        float: left;
-    }
-
-    .friendInfo {
-        width: 25%;
-        display: inline-block;
-        align-items: center;
-        justify-content: center;
-        padding: 5px;
-        vertical-align: top;
-    }
-    .friendInfo img {
-        height: 100%;
-        max-height: 60px;
-        object-fit: contain;
-        clear: both;
-    }
-</style>*@
 <h2>User search</h2>
 @using (Html.BeginForm("Search", "Home"))
 {
@@ -39,24 +18,3 @@
         @Html.TextBox("name") <input type="submit" class="btn right" value="Search" />
     }
 </div>
-@*<input type="text" id="searchBox" />
-<button type="button" onclick="location.href='@Url.Action("Search", "Home", new { s = searchBox'">SEARCH</button>*@
-
-        @*<div id="friendList">
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Christian Reuter</p>
-    </div>
-    <div class="friendInfo">
-        <img src="http://www.spirit-of-metal.com/galeries_photo/photo/Hellfest%202013%20-%20The%20Great%20Old%20Ones/The%20Great%20Old%20Ones_3.jpg" />
-        <p>Savoir Bernecotte Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://data.riksdagen.se/filarkiv/bilder/ledamot/32a23826-6fd4-4a82-bcef-6bc64df3007d_320.jpg" />
-        <p>Savoir Bernecottirone Laurelle</p>
-    </div>
-    <div class="friendInfo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/A_black_cat_named_Tilly.jpg/220px-A_black_cat_named_Tilly.jpg" />
-        <p>Lars-Christian Christoffersson</p>
-    </div>
-    </div>*@

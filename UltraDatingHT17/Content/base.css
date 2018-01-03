@@ -315,6 +315,56 @@ textarea {
         float: left;
     }
 
+#friendListFriends, #pendingRequests {
+    margin-bottom: 20px;
+}
+
+#friendListFriends {
+    width: 100%;
+    float: left;
+}
+
+    #friendListFriends img {
+        height: 100%;
+        max-height: 60px;
+        object-fit: contain;
+        clear: both;
+    }
+
+.friendInfoFriends {
+    width: 25%;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    vertical-align: top;
+    padding: 5px;
+}
+
+#pendingRequests {
+    display: block;
+    width: 100%;
+}
+
+.requestBox {
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-bottom: 10px;
+}
+
+    .requestBox img {
+        float: left;
+        height: 100%;
+        max-height: 120px;
+        object-fit: contain;
+    }
+
+.requestInfo {
+    float: left;
+    padding: 5px;
+    vertical-align: middle;
+}
+
 /* MEDIA */
 
 @media screen and (min-width: 1600px) {

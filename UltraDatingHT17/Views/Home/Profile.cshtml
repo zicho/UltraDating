@@ -4,11 +4,11 @@
     ViewBag.Title = "Profile";
     if (HttpContext.Current.User.Identity.Name.Equals(Model.UserName))
     {
-        ViewBag.TitleBar = "Din profil";
+        ViewBag.TitleBar = "Your profile";
     }
     else
     {
-        ViewBag.TitleBar = @Model.Firstname + "s profil";
+        ViewBag.TitleBar = @Model.Firstname + "'s profile";
     }
     ViewBag.Activate = "profile";
 }
@@ -100,7 +100,7 @@
         <h2>Biography</h2>
         <p>
             <b>Name: </b>@Model.Firstname @Model.Lastname<br />
-            <b>Age: </b><br />
+            <b>Age: 25</b><br />
             <b>Email: </b>@Model.Email<br />
             <br />
             @Model.ProfileInfo
@@ -138,7 +138,6 @@
 
 <div id="shoutbox-posts">
     <h2>@Model.Firstname's shoutbox:</h2>
-    @*@Html.Partial("../Posts/Index",Model.Id);*@
     @Html.Partial("../Posts/Index", new UltraDatingHT17.Controllers.PostIndexViewModel(Model.Id))
 
    <br />

@@ -21,16 +21,13 @@
 
         <p>
             @UltraDatingHT17.Resources.Index.Welcome
-    @*Välkommen till Ultra Dating, stans bästa datingsite.*@
         </p>
     </div>
 
     <div class="index-users">
         @if (ViewBag.RandomUsers.Count != 0)
         {
-        <h2>
-            @UltraDatingHT17.Resources.Index.Profiles
-    @*Ett axplock av tillgängliga profiler*@</h2>
+        <h2>@UltraDatingHT17.Resources.Index.Profiles</h2>
             foreach (var user in ViewBag.RandomUsers)
             {
                 if (User.Identity.IsAuthenticated)
@@ -53,9 +50,7 @@
         }
         else
         {
-            <h2>
-            @UltraDatingHT17.Resources.Index.NoUsers
-    @*Inga registrerade användare än!*@</h2>
+            <h2>@UltraDatingHT17.Resources.Index.NoUsers</h2>
         }
-</div>
+    </div>
 </div>

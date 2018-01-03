@@ -29,8 +29,6 @@ namespace UltraDatingHT17.Controllers
 
         public ActionResult ChangeLanguage(string currentLanguage)
         {
-            System.Diagnostics.Debug.WriteLine("Hey ho");
-            System.Diagnostics.Debug.WriteLine(currentLanguage);
             if (currentLanguage == "Välkommen")
             {
                 var newCulture = CultureInfo.CreateSpecificCulture("en-GB");
