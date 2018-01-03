@@ -119,16 +119,4 @@
         <p>Du har inga vänner!</p>
     }
 
-    @{  var pendingRequests = ViewBag.friendRequests as IEnumerable<UltraDatingHT17.Models.ApplicationUser>;
-
-        if (!pendingRequests.Any(r => r.Id == Model.Id))
-        {
-            <p>Not pending</p>
-        }
-        else
-        {
-            <p>Pending</p> 
-            }
-    }
-
 </div>
