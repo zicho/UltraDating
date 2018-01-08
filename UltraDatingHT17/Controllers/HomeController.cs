@@ -32,7 +32,7 @@ namespace UltraDatingHT17.Controllers
 
         public ActionResult ChangeLanguage(string currentLanguage)
         {
-            if (currentLanguage == "Välkommen")
+            if (currentLanguage == "Välkommen") //If swedish is the current language, switch to english
             {
                 var newCulture = CultureInfo.CreateSpecificCulture("en-GB");
                 Resources.Index.Culture = newCulture;
