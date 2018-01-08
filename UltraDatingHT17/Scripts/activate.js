@@ -3,7 +3,7 @@
 
 function changeActive(menuItem, titleBarText) {
 
-  var activeMenuItem = document.getElementById(menuItem)
+    var activeMenuItem = document.getElementById(menuItem);
   $(activeMenuItem).addClass('active');
   document.getElementById('titlebar-text').innerHTML = titleBarText;
 }
