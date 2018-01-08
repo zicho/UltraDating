@@ -20,6 +20,9 @@ namespace UltraDatingHT17.Controllers
 
         public ActionResult Index()
         {
+
+            // hämtar ut fem slumpvalda användare ur våran databas o slänger upp dem på startsidan
+
             var users = db.Users.ToList();
 
             ViewBag.RandomUsers = users.OrderBy(x => rnd.Next()).Take(5).ToList();

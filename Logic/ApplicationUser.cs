@@ -51,6 +51,8 @@ namespace UltraDatingHT17.Models
         public ApplicationUser()
         {
 
+            // lägger till standardfält på våra användare
+
             IsSearchable = true;
 
             this.Friends = new HashSet<ApplicationUser>();

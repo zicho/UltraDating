@@ -7,6 +7,9 @@ using UltraDatingHT17.Models;
 
 namespace UltraDatingHT17.Controllers
 {
+
+    // denna kontrollerar vilka fält vi vill ha med i våran "ViewData" för att kunna visa på diverse sidor (framnförallt profilsida)
+
     public class FieldController : Controller
     {
         protected override void OnActionExecuted(ActionExecutedContext filterContext)

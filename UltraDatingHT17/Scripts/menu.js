@@ -1,4 +1,7 @@
 ﻿$("#menu-button").click(function () {
+
+    // våran dropdownmeny aktiveras och görs synlig genom att klicka på vår knapp med id menu-button
+
     var menu = document.getElementById("dropdown");
     var menuButton = document.getElementById("menu-button");
     if (menu.style.display === "none") {
@@ -9,6 +12,8 @@
         menuButton.innerHTML = "&#9776";
     }
 
+    // skapar en lista att fylla med de items som finns i vår meny
+
     var menuItems = [];
 
     $("#main-menu a").each(function () {
@@ -16,8 +21,12 @@
         menuItems.push(el);
         //alert(el.text());
     });
+
+    // tar bort det sista itemet ur samlingen, då det bara är knappen som visar menyn
     menuItems.splice(-1, 1);
 
+
+    // skapar en ny lista för de items vi vill "flytta" till vår dropdown
     var dropdown = [];
 
     for (i = 0; i < menuItems.length; i++) {
@@ -35,6 +44,8 @@
     document.getElementById("dropdown").innerHTML = dropdown;
 });
 
+
+// dölj menyn vid klick utanför
 window.onclick = function (event) {
     var menu = document.getElementById("dropdown");
     var menuButton = document.getElementById("menu-button");
@@ -45,6 +56,7 @@ window.onclick = function (event) {
     }
 };
 
+// dölj menyn vid resize
 window.onresize = function (event) {
     var menu = document.getElementById("dropdown");
     var menuButton = document.getElementById("menu-button");

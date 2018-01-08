@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ChangeLanguage" xml:space="preserve">
-    <value>Byt språk</value>
+    <value>Switch to English</value>
   </data>
   <data name="NoUsers" xml:space="preserve">
     <value>Inga registrerade användare än!</value>

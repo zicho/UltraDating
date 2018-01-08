@@ -61,7 +61,7 @@ namespace UltraDatingHT17.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change language.
+        ///   Looks up a localized string similar to Byt till svenska.
         /// </summary>
         public static string ChangeLanguage {
             get {
